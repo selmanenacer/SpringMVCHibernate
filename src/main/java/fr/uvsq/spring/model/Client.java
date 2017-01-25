@@ -21,9 +21,6 @@ public class Client {
 	private String psw;
 	private int tel;
 	
-	@OneToOne(mappedBy="client", cascade=CascadeType.ALL)
-	private Panier panier;
-	
 	@OneToOne (cascade = CascadeType.ALL)
 	private Adresse adresse;
 	
@@ -35,17 +32,13 @@ public class Client {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Client(String nom, String prenom, String email, String psw, int tel, Panier panier, Adresse adresse,
-			Set<Commande> commande) {
+	public Client(String nom, String prenom, String email, String psw, int tel) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.psw = psw;
 		this.tel = tel;
-		this.panier = panier;
-		this.adresse = adresse;
-		this.commande = commande;
 	}
 
 	public int getId() {
@@ -94,14 +87,6 @@ public class Client {
 
 	public void setTel(int tel) {
 		this.tel = tel;
-	}
-
-	public Panier getPanier() {
-		return panier;
-	}
-
-	public void setPanier(Panier panier) {
-		this.panier = panier;
 	}
 
 	public Adresse getAdresse() {

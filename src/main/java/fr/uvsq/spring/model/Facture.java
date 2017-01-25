@@ -12,7 +12,7 @@ public class Facture {
 	@GeneratedValue
 	private int id;
 	
-	@OneToOne(mappedBy="facture", cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
 	private Commande commande;
 	
 	public Facture(){

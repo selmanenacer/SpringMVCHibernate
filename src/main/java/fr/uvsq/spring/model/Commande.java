@@ -7,11 +7,9 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+
 
 @Entity
 public class Commande {
@@ -25,25 +23,19 @@ public class Commande {
 	private Set<LigneCommande> ligneCommandes = new HashSet<LigneCommande>();
 	
 	@ManyToOne 
-	@JoinColumn (name="idClient")
 	private Client client;
-	
-	@OneToOne
-	@PrimaryKeyJoinColumn
-	private Facture facture;
 	
 	public Commande(){
 		super();
 	}
 	
 	public Commande(Date dateCommande, double montant, Set<LigneCommande> ligneCommandes,
-			Client client, Facture facture) {
+			Client client) {
 		super();
 		this.dateCommande = dateCommande;
 		this.montant = montant;
 		this.ligneCommandes = ligneCommandes;
 		this.client = client;
-		this.facture = facture;
 	}
 	public int getId() {
 		return id;
@@ -75,14 +67,5 @@ public class Commande {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-	public Facture getFacture() {
-		return facture;
-	}
-	public void setFacture(Facture facture) {
-		this.facture = facture;
-	}
 	
-	
-	
-
 }

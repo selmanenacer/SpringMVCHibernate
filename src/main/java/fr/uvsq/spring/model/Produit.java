@@ -15,7 +15,6 @@ public class Produit {
 	private String libelle;
 	
 	@ManyToOne 
-	@JoinColumn (name="idCategorie")
 	private Categorie categorie;
 	
 	private int stock;

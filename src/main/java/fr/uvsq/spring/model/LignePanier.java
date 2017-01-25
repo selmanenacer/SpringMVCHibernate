@@ -10,9 +10,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class LigneCommande {
+public class LignePanier {
 	@Id
 	@GeneratedValue
+	@Column(name="id")
 	private int id;
 	private int quantite;
 	private double montant;
@@ -20,18 +21,16 @@ public class LigneCommande {
 	private Produit produit;
 	
 	@ManyToOne 
-	private Commande commande;
+	private Client client;
 	
-	public LigneCommande(){
+	public LignePanier(){
 		super();
 	}
 	
-	public LigneCommande(int quantite, double montant, Produit produit, Commande commande) {
+	public LignePanier(int quantite, double montant) {
 		super();
 		this.quantite = quantite;
 		this.montant = montant;
-		this.produit = produit;
-		this.commande = commande;
 	}
 	public int getId() {
 		return id;
@@ -51,18 +50,13 @@ public class LigneCommande {
 	public void setMontant(double montant) {
 		this.montant = montant;
 	}
+	
 	public Produit getProduit() {
 		return produit;
 	}
+	
 	public void setProduit(Produit produit) {
 		this.produit = produit;
 	}
-	public Commande getCommande() {
-		return commande;
-	}
-	public void setCommande(Commande commande) {
-		this.commande = commande;
-	}
-	
 	
 }
