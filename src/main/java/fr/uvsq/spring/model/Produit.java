@@ -29,10 +29,10 @@ public class Produit {
 		this.categorie = categorie;
 		this.stock = stock;
 	}
-	public int getIdProduit() {
+	public int getId() {
 		return id;
 	}
-	public void setIdProduit(int idProduit) {
+	public void setId(int idProduit) {
 		this.id = idProduit;
 	}
 	public String getLibelle() {

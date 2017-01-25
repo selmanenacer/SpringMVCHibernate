@@ -49,6 +49,13 @@
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 	
+	<beans:bean id="categorieDAO" class="fr.uvsq.spring.dao.CategorieDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	
+	<beans:bean id="produitDAO" class="fr.uvsq.spring.dao.ProduitDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
 	
 	<!-- ************************************************************ -->
 	<!-- ********************* Les Beans Services******************** -->
@@ -64,6 +71,14 @@
 	
 	<beans:bean id="clientService" class="fr.uvsq.spring.service.ClientServiceImpl">
 		<beans:property name="clientDAO" ref="clientDAO"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="categorieService" class="fr.uvsq.spring.service.CategorieServiceImpl">
+		<beans:property name="categorieDAO" ref="categorieDAO"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="produitService" class="fr.uvsq.spring.service.ProduitServiceImpl">
+		<beans:property name="produitDAO" ref="produitDAO"></beans:property>
 	</beans:bean>
 	
 	
