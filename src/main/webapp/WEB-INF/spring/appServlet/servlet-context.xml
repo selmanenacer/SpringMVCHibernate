@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing 
+		infrastructure -->
+		
+		
+		
+
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+		in the /WEB-INF/views directory -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<!-- ************************************************************ -->
+	<!-- ********************* Les Beans DAO************************* -->
+	<!-- ************************************************************ -->
+	<beans:bean id="personDAO" class="fr.uvsq.spring.dao.PersonDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	
+	<beans:bean id="adresseDAO" class="fr.uvsq.spring.dao.AdresseDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	
+	<beans:bean id="clientDAO" class="fr.uvsq.spring.dao.ClientDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	
+	
+	<!-- ************************************************************ -->
+	<!-- ********************* Les Beans Services******************** -->
+	<!-- ************************************************************ -->
+	
+	<beans:bean id="personService" class="fr.uvsq.spring.service.PersonServiceImpl">
+		<beans:property name="personDAO" ref="personDAO"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="adresseService" class="fr.uvsq.spring.service.AdresseServiceImpl">
+		<beans:property name="adresseDAO" ref="adresseDAO"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="clientService" class="fr.uvsq.spring.service.ClientServiceImpl">
+		<beans:property name="clientDAO" ref="clientDAO"></beans:property>
+	</beans:bean>
+	
+	
+	<!-- ************************************************************ -->
+	<!-- ********************* Les Beans par défaut****************** -->
+	<!-- ************************************************************ -->
+	<context:component-scan base-package="fr.uvsq.spring" />
+	
+</beans:beans>
