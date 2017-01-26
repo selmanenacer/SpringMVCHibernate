@@ -1,16 +1,8 @@
 package fr.uvsq.spring.service;
 
-import java.util.List;
-
 import fr.uvsq.spring.model.Client;
 
 public interface ClientService extends HomeService<Client>{
-	
-	Client findById(int id);
-	List<Client> findAll();
-	void insert(Client nouveau);
-	void update(Client nouveau);
-	void delete(int id);
-	Client isValidClient(String email , String psw);
 
+	Client isValidClient(String email , String psw);
 }
