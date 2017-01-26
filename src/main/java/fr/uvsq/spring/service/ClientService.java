@@ -11,5 +11,6 @@ public interface ClientService extends HomeService<Client>{
 	void insert(Client nouveau);
 	void update(Client nouveau);
 	void delete(int id);
+	Client isValidClient(String email , String psw);
 
 }

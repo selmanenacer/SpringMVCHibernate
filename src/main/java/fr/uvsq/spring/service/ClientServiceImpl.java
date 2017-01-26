@@ -52,4 +52,11 @@ public class ClientServiceImpl implements ClientService {
 		
 	}
 
+	@Override
+	@Transactional
+	public Client isValidClient(String email, String psw) {
+		
+		return clientDAO.isValidClient(email, psw);
+	}
+
 }
