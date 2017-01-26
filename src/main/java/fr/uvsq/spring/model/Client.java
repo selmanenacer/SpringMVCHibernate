@@ -39,6 +39,18 @@ public class Client {
 
 	
 
+	public Client(int id, String nom, String prenom, String email, String psw, int tel) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.psw = psw;
+		this.tel = tel;
+	}
+
+
+
 	public int getId() {
 		return id;
 	}
