@@ -4,9 +4,7 @@ import java.util.List;
 
 import fr.uvsq.spring.model.Client;
 
-
-
-public interface ClientDAO {
+public interface ClientDAO extends HomeDAO<Client>{
 	
 	Client findById(int id);
 	List<Client> findAll();

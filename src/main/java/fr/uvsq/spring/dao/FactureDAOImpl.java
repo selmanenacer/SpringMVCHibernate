@@ -8,13 +8,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-
-import fr.uvsq.spring.model.Client;
+import fr.uvsq.spring.model.Facture;
 
 @Repository
-public class ClientDAOImpl implements ClientDAO {
-	
-	private static final Logger logger = LoggerFactory.getLogger(ClientDAOImpl.class);
+public class FactureDAOImpl  implements FactureDAO {
+
+	private static final Logger logger = LoggerFactory.getLogger(FactureDAOImpl.class);
 
 	private SessionFactory sessionFactory;
 	
@@ -23,45 +22,46 @@ public class ClientDAOImpl implements ClientDAO {
 	}
 
 	@Override
-	public Client findById(int id) {
+	public Facture findById(int id) {
 		Session session = this.sessionFactory.getCurrentSession();		
-		Client p = (Client) session.load(Client.class, new Integer(id));
-		logger.info("Customer loaded successfully, Customer details="+p);
+		Facture p = (Facture) session.load(Facture.class, new Integer(id));
+		logger.info("Facture loaded successfully, Facture details="+p);
 		return p;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Client> findAll() {
+	public List<Facture> findAll() {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Client> clientsList = session.createQuery("from Client").list();
-		for(Client p : clientsList){
-			logger.info("Client List::"+p);
+		List<Facture> facturesList = session.createQuery("from Facture").list();
+		for(Facture p : facturesList){
+			logger.info("Adresse List::"+p);
 		}
-		return clientsList;
+		return facturesList;
 	}
 
 	@Override
-	public void insert(Client nouveau) {
+	public void insert(Facture nouveau) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(nouveau);
-		logger.info("Customer saved successfully, Customer Details="+nouveau);
+		logger.info("Facture saved successfully, Facture Details="+nouveau);
 	}
 
 	@Override
-	public void update(Client nouveau) {
+	public void update(Facture nouveau) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(nouveau);
-		logger.info("Customer updated successfully, Customer Details="+nouveau);
+		logger.info("Facture updated successfully, Facture Details="+nouveau);
 	}
 
 	@Override
 	public void delete(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Client p = (Client) session.load(Client.class, new Integer(id));
+		Facture p = (Facture) session.load(Facture.class, new Integer(id));
 		if(null != p){
 			session.delete(p);
 		}
-		logger.info("Customer deleted successfully, Customer details="+p);
+		logger.info("Facture deleted successfully, Facture details="+p);
 	}
+	
 }

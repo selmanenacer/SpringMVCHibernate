@@ -13,7 +13,7 @@ import fr.uvsq.spring.model.Adresse;
 @Repository
 public class AdresseDAOImpl  implements AdresseDAO {
 
-	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(AdresseDAOImpl.class);
 
 	private SessionFactory sessionFactory;
 	
@@ -29,6 +29,7 @@ public class AdresseDAOImpl  implements AdresseDAO {
 		return p;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Adresse> findAll() {
 		Session session = this.sessionFactory.getCurrentSession();
@@ -62,21 +63,5 @@ public class AdresseDAOImpl  implements AdresseDAO {
 		}
 		logger.info("Adress deleted successfully, Adresse details="+p);
 	}
-	
-	
-	
-
-	/*
-	public List<Adresse> findAll(String query) {
-		List<Adresse> list = new ArrayList<Adresse>();
-		list = getHibernateTemplate().find(query) ;
-		System.out.println("hdtttttttttttttttttttttttt"+list.size());
-		Adresse adr = new Adresse();
-		adr.setRue("22");
-		adr.setVille("izan");
-		list.add(adr);
-		return list;
-	}
-	*/
 
 }
