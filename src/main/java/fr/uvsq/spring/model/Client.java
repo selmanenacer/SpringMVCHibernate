@@ -4,11 +4,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Columns;
 
 @Entity
 public class Client {
@@ -20,6 +23,8 @@ public class Client {
 	private String email;
 	private String psw;
 	private int tel;
+	@Column(columnDefinition="int(1) null default 1 ")
+	private int type;
 	
 	@OneToOne (cascade = CascadeType.ALL)
 	private Adresse adresse;
@@ -29,17 +34,10 @@ public class Client {
 	
 	public Client() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	public Client(String nom, String prenom, String email, String psw, int tel) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.psw = psw;
-		this.tel = tel;
-	}
+	
 
 	public int getId() {
 		return id;
@@ -87,6 +85,15 @@ public class Client {
 
 	public void setTel(int tel) {
 		this.tel = tel;
+	}
+
+	
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 
 	public Adresse getAdresse() {

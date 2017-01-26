@@ -2,6 +2,7 @@ package fr.uvsq.spring.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -43,6 +44,7 @@ public class ClientDAOImpl implements ClientDAO {
 	@Override
 	public void insert(Client nouveau) {
 		Session session = this.sessionFactory.getCurrentSession();
+		nouveau.setType(1);
 		session.persist(nouveau);
 		logger.info("Customer saved successfully, Customer Details="+nouveau);
 	}
@@ -62,5 +64,19 @@ public class ClientDAOImpl implements ClientDAO {
 			session.delete(p);
 		}
 		logger.info("Customer deleted successfully, Customer details="+p);
+	}
+
+	@Override
+	public Client isValidClient(String email, String psw) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Client where email = :eml and psw = :psw ");
+		query.setParameter("eml", email);
+		query.setParameter("psw", psw);
+		List list = query.list();
+		
+		if (list.size()>0 ){
+			return (Client) list.get(0);
+		}
+		return null;
 	}
 }

@@ -66,6 +66,16 @@
 	</tr>
 	<tr>
 		<td>
+			<form:label path="psw">
+				<spring:message text="password"/>
+			</form:label>
+		</td>
+		<td>
+			<form:password path="psw" />
+		</td> 
+	</tr>
+	<tr>
+		<td>
 			<form:label path="adresse.rue">
 				<spring:message text="rue"/>
 			</form:label>
