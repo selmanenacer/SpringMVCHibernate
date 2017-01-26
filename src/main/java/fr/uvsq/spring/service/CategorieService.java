@@ -4,7 +4,7 @@ import java.util.List;
 
 import fr.uvsq.spring.model.Categorie;
 
-public interface CategorieService {
+public interface CategorieService extends HomeService<Categorie>{
 	
 	Categorie findById(int id);
 	List<Categorie> findAll();

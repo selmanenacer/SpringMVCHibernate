@@ -4,9 +4,7 @@ import java.util.List;
 
 import fr.uvsq.spring.model.Client;
 
-
-
-public interface ClientService {
+public interface ClientService extends HomeService<Client>{
 	
 	Client findById(int id);
 	List<Client> findAll();

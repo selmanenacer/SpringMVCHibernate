@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.uvsq.spring.dao.CategorieDAO;
-import fr.uvsq.spring.dao.ClientDAO;
 import fr.uvsq.spring.model.Categorie;
 
 public class CategorieServiceImpl implements CategorieService {

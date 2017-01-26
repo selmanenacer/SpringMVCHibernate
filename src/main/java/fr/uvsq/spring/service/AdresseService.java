@@ -4,7 +4,7 @@ import java.util.List;
 
 import fr.uvsq.spring.model.Adresse;
 
-public interface AdresseService {
+public interface AdresseService extends HomeService<Adresse>{
 	
 	Adresse findById(int id);
 	List<Adresse> findAll();

@@ -4,7 +4,7 @@ import java.util.List;
 
 import fr.uvsq.spring.model.Produit;
 
-public interface ProduitService {
+public interface ProduitService extends HomeService<Produit>{
 	
 	Produit findById(int id);
 	List<Produit> findAll();
