@@ -5,7 +5,7 @@ import java.util.List;
 
 import fr.uvsq.spring.model.Produit;
 
-public interface ProduitDAO {
+public interface ProduitDAO extends HomeDAO<Produit>{
 	
 	Produit findById(int id);
 	List<Produit> findAll();

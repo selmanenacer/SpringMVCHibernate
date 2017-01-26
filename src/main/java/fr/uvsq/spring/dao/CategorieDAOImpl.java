@@ -14,7 +14,7 @@ import fr.uvsq.spring.model.Categorie;
 @Repository
 public class CategorieDAOImpl implements CategorieDAO{
 	
-	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(CategorieDAOImpl.class);
 
 	private SessionFactory sessionFactory;
 	
@@ -26,7 +26,7 @@ public class CategorieDAOImpl implements CategorieDAO{
 	public Categorie findById(int id) {
 		Session session = this.sessionFactory.getCurrentSession();		
 		Categorie categorie = (Categorie) session.load(Categorie.class, new Integer(id));
-		logger.info("Customer loaded successfully, Customer details="+categorie);
+		logger.info("Categorie loaded successfully, Categorie details="+categorie);
 		return categorie;
 	}
 
@@ -45,7 +45,7 @@ public class CategorieDAOImpl implements CategorieDAO{
 	public void insert(Categorie nouveau) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(nouveau);
-		logger.info("Customer saved successfully, Customer Details="+nouveau);
+		logger.info("Categorie saved successfully, Categorie Details="+nouveau);
 		
 	}
 
@@ -53,7 +53,7 @@ public class CategorieDAOImpl implements CategorieDAO{
 	public void update(Categorie nouveau) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(nouveau);
-		logger.info("Customer updated successfully, Customer Details="+nouveau);
+		logger.info("Categorie updated successfully, Categorie Details="+nouveau);
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class CategorieDAOImpl implements CategorieDAO{
 		if(null != categorie){
 			session.delete(categorie);
 		}
-		logger.info("Customer deleted successfully, Customer details="+categorie);
+		logger.info("Categorie deleted successfully, Categorie details="+categorie);
 		
 	}
 	

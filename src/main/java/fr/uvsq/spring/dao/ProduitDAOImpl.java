@@ -14,7 +14,7 @@ import fr.uvsq.spring.model.Produit;
 @Repository
 public class ProduitDAOImpl implements ProduitDAO{
 
-	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(ProduitDAOImpl.class);
 	private SessionFactory sessionFactory;
 
 	public void setSessionFactory(SessionFactory sf){

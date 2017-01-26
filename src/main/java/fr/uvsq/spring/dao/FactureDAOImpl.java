@@ -8,12 +8,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import fr.uvsq.spring.model.Adresse;
+import fr.uvsq.spring.model.Facture;
 
 @Repository
-public class AdresseDAOImpl  implements AdresseDAO {
+public class FactureDAOImpl  implements FactureDAO {
 
-	private static final Logger logger = LoggerFactory.getLogger(AdresseDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(FactureDAOImpl.class);
 
 	private SessionFactory sessionFactory;
 	
@@ -22,46 +22,46 @@ public class AdresseDAOImpl  implements AdresseDAO {
 	}
 
 	@Override
-	public Adresse findById(int id) {
+	public Facture findById(int id) {
 		Session session = this.sessionFactory.getCurrentSession();		
-		Adresse p = (Adresse) session.load(Adresse.class, new Integer(id));
-		logger.info("Adress loaded successfully, Adress details="+p);
+		Facture p = (Facture) session.load(Facture.class, new Integer(id));
+		logger.info("Facture loaded successfully, Facture details="+p);
 		return p;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Adresse> findAll() {
+	public List<Facture> findAll() {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Adresse> adressesList = session.createQuery("from Adresse").list();
-		for(Adresse p : adressesList){
+		List<Facture> facturesList = session.createQuery("from Facture").list();
+		for(Facture p : facturesList){
 			logger.info("Adresse List::"+p);
 		}
-		return adressesList;
+		return facturesList;
 	}
 
 	@Override
-	public void insert(Adresse nouveau) {
+	public void insert(Facture nouveau) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(nouveau);
-		logger.info("Adress saved successfully, Adress Details="+nouveau);
+		logger.info("Facture saved successfully, Facture Details="+nouveau);
 	}
 
 	@Override
-	public void update(Adresse nouveau) {
+	public void update(Facture nouveau) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(nouveau);
-		logger.info("Adress updated successfully, Adress Details="+nouveau);
+		logger.info("Facture updated successfully, Facture Details="+nouveau);
 	}
 
 	@Override
 	public void delete(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Adresse p = (Adresse) session.load(Adresse.class, new Integer(id));
+		Facture p = (Facture) session.load(Facture.class, new Integer(id));
 		if(null != p){
 			session.delete(p);
 		}
-		logger.info("Adress deleted successfully, Adresse details="+p);
+		logger.info("Facture deleted successfully, Facture details="+p);
 	}
-
+	
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import fr.uvsq.spring.model.Adresse;
 
-public interface AdresseDAO {
+public interface AdresseDAO extends HomeDAO<Adresse>{
 	
 	Adresse findById(int id);
 	List<Adresse> findAll();

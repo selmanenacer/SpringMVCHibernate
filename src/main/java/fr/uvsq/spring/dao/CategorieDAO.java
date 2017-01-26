@@ -5,7 +5,7 @@ import java.util.List;
 import fr.uvsq.spring.model.Categorie;
 
 
-public interface CategorieDAO {
+public interface CategorieDAO extends HomeDAO<Categorie>{
 	
 	Categorie findById(int id);
 	List<Categorie> findAll();

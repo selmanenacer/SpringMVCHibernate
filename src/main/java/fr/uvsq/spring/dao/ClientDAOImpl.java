@@ -15,7 +15,7 @@ import fr.uvsq.spring.model.Client;
 @Repository
 public class ClientDAOImpl implements ClientDAO {
 	
-	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(ClientDAOImpl.class);
 
 	private SessionFactory sessionFactory;
 	
@@ -31,6 +31,7 @@ public class ClientDAOImpl implements ClientDAO {
 		return p;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Client> findAll() {
 		Session session = this.sessionFactory.getCurrentSession();
