@@ -29,19 +29,19 @@
 			</form:label>
 		</td>
 		<td>
-			<form:input path="id" readonly="true" size="8"  disabled="true" />
-			<form:hidden path="id" />
+			<form:input path="id" readonly="true" size="8"  disabled="true"  />
+			<form:hidden path="id"   />
 		</td> 
 	</tr>
 	</c:if>
 	<tr>
 		<td>
 			<form:label path="nom">
-				<spring:message text="nom"/>
+				<spring:message text="nom" />
 			</form:label>
 		</td>
 		<td>
-			<form:input path="nom" />
+			<form:input path="nom" value="${user.nom }" />
 		</td> 
 	</tr>
 	<tr>
@@ -51,7 +51,7 @@
 			</form:label>
 		</td>
 		<td>
-			<form:input path="prenom" />
+			<form:input path="prenom" value="${user.prenom }"/>
 		</td>
 	</tr>
 	<tr>
@@ -81,7 +81,7 @@
 			</form:label>
 		</td>
 		<td>
-			<form:input path="adresse.rue" />
+			<form:input path="adresse.rue" value="${user.adresse.rue }"/>
 		</td> 
 	</tr>
 	<tr>
@@ -91,7 +91,7 @@
 			</form:label>
 		</td>
 		<td>
-			<form:input path="adresse.ville" />
+			<form:input path="adresse.ville" value="${user.adresse.ville }"/>
 		</td> 
 	</tr>
 	<tr>
@@ -101,16 +101,16 @@
 			</form:label>
 		</td>
 		<td>
-			<form:input path="adresse.codePostal" />
+			<form:input path="adresse.codePostal" value="${user.adresse.codePostal }" />
 		</td> 
 	</tr>
 	<tr>
 		<td colspan="2">
-			<c:if test="${!empty client.nom}">
+			<c:if test="${!empty client.nom && empty user.nom  }">
 				<input type="submit"
 					value="<spring:message text="Edit client"/>" />
 			</c:if>
-			<c:if test="${empty client.nom}">
+			<c:if test="${empty client.nom or !empty user.nom }">
 				<input type="submit"
 					value="<spring:message text="Add client"/>" />
 			</c:if>
@@ -119,6 +119,9 @@
 </table>	
 </form:form>
 <br>
+<c:if test="${! empty user }">
+<h1> Email exist   </h1>
+</c:if>
 <h3>CLient List</h3>
 <c:if test="${!empty listClients}">
 	<table class="tg">

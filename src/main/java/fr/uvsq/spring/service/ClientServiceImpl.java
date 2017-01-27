@@ -59,4 +59,11 @@ public class ClientServiceImpl implements ClientService {
 		return clientDAO.isValidClient(email, psw);
 	}
 
+	@Override
+	@Transactional
+	public boolean clientExist(String email) {
+		
+		return this.clientDAO.clientExist(email);
+	}
+
 }

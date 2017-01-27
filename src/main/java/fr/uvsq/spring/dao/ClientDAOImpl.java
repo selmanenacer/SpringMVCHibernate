@@ -80,4 +80,18 @@ public class ClientDAOImpl implements ClientDAO {
 		}
 		return null;
 	}
+
+	@Override
+	public boolean clientExist(String email) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Client where email = :eml  ");
+		query.setParameter("eml", email);
+		List list = query.list();
+		if(list.size()>0){
+			return true;
+		}else{
+			return false;
+		}
+		
+	}
 }

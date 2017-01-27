@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import fr.uvsq.spring.model.Client;
-import fr.uvsq.spring.model.Person;
 import fr.uvsq.spring.service.ClientService;
 
 @Controller
@@ -33,15 +32,22 @@ public class ClientController {
 	
 	//For add and update person both
 	@RequestMapping(value= "/client/add", method = RequestMethod.POST)
-	public String insert(@ModelAttribute("client") Client p){
-		
+	public String insert(@ModelAttribute("client") Client p , Model model){
+
 		//p.setAdresse(@ModelAttribute("adress") Adresse a);
-		if(p.getId() == 0){
+		
+		if(!clientService.clientExist(p.getEmail())){
 			//new person, add it
+			
 			this.clientService.insert(p);
-		}else{
+		}else if ( p.getId() !=0){
 			//existing person, call update
+			
 			this.clientService.update(p);
+		}else{
+			//existing person, change email
+			model.addAttribute("user", p );
+			return "client" ;
 		}
 		
 		return "redirect:/clients";
