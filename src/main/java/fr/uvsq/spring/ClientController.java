@@ -38,7 +38,7 @@ public class ClientController {
 		
 		if(!clientService.clientExist(p.getEmail())){
 			//new person, add it
-			
+			p.setType(1);
 			this.clientService.insert(p);
 		}else if ( p.getId() !=0){
 			//existing person, call update

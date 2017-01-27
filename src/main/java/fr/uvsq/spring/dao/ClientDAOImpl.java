@@ -45,7 +45,7 @@ public class ClientDAOImpl implements ClientDAO {
 	@Override
 	public void insert(Client nouveau) {
 		Session session = this.sessionFactory.getCurrentSession();
-		nouveau.setType(1);
+		
 		session.persist(nouveau);
 		logger.info("Customer saved successfully, Customer Details="+nouveau);
 	}

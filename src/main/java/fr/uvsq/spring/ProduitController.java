@@ -19,19 +19,19 @@ public class ProduitController {
 
 	private ProduitService produitService ;
 	private CategorieService categorieService;
-	
+
 	@Autowired(required=true)
 	@Qualifier(value="produitService")
 	public void setProduitService(ProduitService produitService) {
 		this.produitService = produitService;
 	}
-	
+
 	@Autowired(required=true)
 	@Qualifier(value="categorieService")
 	public void setCategorieService(CategorieService categorieService ){
 		this.categorieService = categorieService;
 	}
-	
+
 	@RequestMapping(value = "/produits", method = RequestMethod.GET)
 	public String listclients(Model model) {
 		model.addAttribute("produit", new Produit());
@@ -39,10 +39,10 @@ public class ProduitController {
 		model.addAttribute("listCategorie", this.categorieService.findAll());
 		return "produit"; 
 	}
-	
+
 	@RequestMapping(value= "/produit/add", method = RequestMethod.POST)
 	public String insert(@ModelAttribute("produit") Produit p){
-		
+
 		if(p.getId() == 0){
 			//new person, add it
 			Categorie c= categorieService.findById(p.getCategorie().getId());
@@ -54,24 +54,23 @@ public class ProduitController {
 			p.setCategorie(c);
 			this.produitService.update(p);
 		}
-		
 		return "redirect:/produits";
 	}
-	
+
 	@RequestMapping("/removeProduit/{id}")
-    public String removeClient(@PathVariable("id") int id){
-		
-        this.produitService.delete(id); 
-        return "redirect:/produits";
-    }
-	
+	public String removeClient(@PathVariable("id") int id){
+
+		this.produitService.delete(id); 
+		return "redirect:/produits";
+	}
+
 	@RequestMapping("/editProduit/{id}")
-    public String editClient(@PathVariable("id") int id, Model model){
-        model.addAttribute("produit", this.produitService.findById(id));
-        model.addAttribute("listProduits", this.produitService.findAll());
-        model.addAttribute("listCategorie", this.categorieService.findAll());
-        return "produit";
-    }
+	public String editClient(@PathVariable("id") int id, Model model){
+		model.addAttribute("produit", this.produitService.findById(id));
+		model.addAttribute("listProduits", this.produitService.findAll());
+		model.addAttribute("listCategorie", this.categorieService.findAll());
+		return "produit";
+	}
 
 
 }
