@@ -26,7 +26,11 @@ public class LoginController {
 	public void setClientService(ClientService clientService) {
 		this.clientService = clientService;
 	}
-	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String test(Model model) {
+		
+		return "testcss";
+	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String listclients(Model model) {
 		model.addAttribute("login", new Client());
