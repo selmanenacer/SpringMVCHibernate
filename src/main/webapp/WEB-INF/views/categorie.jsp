@@ -170,8 +170,7 @@
 							</form:form>
 
 						</div>
-						<div style="height: 20px">
-						</div>
+						
 						<div class="contact_form">
 							<h3>Liste des catégories de produits</h3>
 							<c:if test="${!empty listCategorie}">
