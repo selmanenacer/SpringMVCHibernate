@@ -172,13 +172,13 @@
 								
 								<div class="form_row">
 									<c:if test="${!empty produit.libelle}">
-										<input type="submit" class="contact_input" value="<spring:message text="Edit produit"/>" />
+										<input type="submit"  value="<spring:message text="Edit produit"/>" />
 									</c:if>
 								</div>
 								
 								<div class="form_row">
 									<c:if test="${empty produit.libelle}">
-										<input type="submit" class="contact_input" value="<spring:message text="Add produit"/>" />
+										<input type="submit" value="<spring:message text="Add produit"/>" />
 									</c:if>
 								</div>
 

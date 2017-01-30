@@ -157,13 +157,13 @@
 								</div>
 								<div class="form_row">
 									<c:if test="${!empty categorie.nom}">
-										<input type="submit" class="contact_input" value="<spring:message text="Edit Categorie"/>" />
+										<input type="submit" value="<spring:message text="Edit Categorie"/>" />
 									</c:if>
 								</div>
 								
 								<div class="form_row">
 									<c:if test="${empty categorie.nom}">
-										<input type="submit" class="contact_input" value="<spring:message text="Add Categorie"/>" />
+										<input type="submit" value="<spring:message text="Add Categorie"/>" />
 									</c:if>
 								</div>
 							
