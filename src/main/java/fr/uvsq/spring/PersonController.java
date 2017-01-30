@@ -41,7 +41,6 @@ public class PersonController {
 			//existing person, call update
 			this.personService.updatePerson(p);
 		}
-		
 		return "redirect:/persons";
 		
 	}

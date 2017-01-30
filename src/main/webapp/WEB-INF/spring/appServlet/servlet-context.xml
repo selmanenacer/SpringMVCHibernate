@@ -10,9 +10,6 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 		
-		
-		
-
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
@@ -58,6 +55,10 @@
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 	
+	<beans:bean id="imageBlobDAO" class="fr.uvsq.spring.dao.ImageBlobDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	
 	<!-- ************************************************************ -->
 	<!-- ********************* Les Beans Services******************** -->
 	<!-- ************************************************************ -->
@@ -82,10 +83,20 @@
 		<beans:property name="produitDAO" ref="produitDAO"></beans:property>
 	</beans:bean>
 	
+	<beans:bean id="imageBlobService" class="fr.uvsq.spring.service.ImageBlobServiceImpl">
+		<beans:property name="imageBlobDAO" ref="imageBlobDAO"></beans:property>
+	</beans:bean>
+	
 	
 	<!-- ************************************************************ -->
 	<!-- ********************* Les Beans par défaut****************** -->
 	<!-- ************************************************************ -->
 	<context:component-scan base-package="fr.uvsq.spring" />
+	
+	
+	<!-- ************************************************************ -->
+	<!-- ********************* Les Beans de tests****************** -->
+	<!-- ************************************************************ -->
+	
 	
 </beans:beans>
