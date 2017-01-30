@@ -130,73 +130,14 @@
 			</div>
 			<!-- end of left content -->
 			<div class="center_content">
-				<div class="center_title_bar">Ajouter une catégorie</div>
+				<div class="center_title_bar">Ajouter un produit</div>
 				<div class="prod_box_big">
 					<div class="top_prod_box_big"></div>
 					<div class="center_prod_box_big">
 
 						<div class="contact_form">
-							<c:url var="addAction" value="/categorie/add"></c:url>
-
-							<form:form action="${addAction}" commandName="categorie">
-							
-								<div class="form_row">			
-									<c:if test="${!empty categorie.nom}">						
-										<form:label path="id" class="contact"> <spring:message text="ID" /> </form:label>
-										<form:input path="id" readonly="true" size="8" disabled="true" class="contact_input"/> 
-										<form:hidden path="id" />
-									</c:if>
-								</div>
-								<div class="form_row">
-									<form:label path="nom" class="contact"> <spring:message text="Nom" /> </form:label>
-									<form:input path="nom" class="contact_input"/>
-								</div>
-								<div class="form_row">
-									<form:label path="description" class="contact"> <spring:message text="description" /></form:label>
-									<form:input path="description" class="contact_input"/>
-								</div>
-								<div class="form_row">
-									<c:if test="${!empty categorie.nom}">
-										<input type="submit" class="contact_input" value="<spring:message text="Edit Categorie"/>" />
-									</c:if>
-								</div>
-								
-								<div class="form_row">
-									<c:if test="${empty categorie.nom}">
-										<input type="submit" class="contact_input" value="<spring:message text="Add Categorie"/>" />
-									</c:if>
-								</div>
-							
-							</form:form>
-
+							<h1> izan izan izan</h1>
 						</div>
-						<div style="height: 20px">
-						</div>
-						<div class="contact_form">
-							<h3>Liste des catégories de produits</h3>
-							<c:if test="${!empty listCategorie}">
-								<table class="tg">
-									<tr>
-										<th width="80">ID</th>
-										<th width="120">Name</th>
-										<th width="120">description</th>
-										<th width="60">Edit</th>
-										<th width="60">Delete</th>
-									</tr>
-									<c:forEach items="${listCategorie}" var="categorie">
-										<tr>
-											<td>${categorie.id}</td>
-											<td>${categorie.nom}</td>
-											<td>${categorie.description}</td>
-											<td><a href="<c:url value='/editCategorie/${categorie.id}' />">Edit</a></td>
-											<td><a
-												href="<c:url value='/removeCategorie/${categorie.id}' />">Delete</a></td>
-										</tr>
-									</c:forEach>
-								</table>
-							</c:if>
-						</div>					
-						
 
 					</div>
 					<div class="bottom_prod_box_big"></div>

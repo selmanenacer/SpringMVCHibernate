@@ -33,5 +33,11 @@ public class HomePageController {
 	public String list(Model model) {
 		return "list";
 	}
+	
+	@RequestMapping(value = "/product", method = RequestMethod.GET)
+	public String addProduct(Model model) {
+		model.addAttribute("login", new Client());
+		return "product";
+	}
 
 }
