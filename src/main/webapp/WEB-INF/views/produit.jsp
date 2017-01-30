@@ -4,6 +4,9 @@
 <%@ page session="false"%>
 <html>
 <head>
+
+
+
 <title>Person Page</title>
 <style type="text/css">
 .tg {
@@ -43,13 +46,16 @@
 	background-color: #f9f9f9
 }
 </style>
+<spring:url value="/resources/style.css" var="css" />
+<spring:url value="/resources/js/boxOver.js" var="boxOver" />
+<spring:url value="/resources/images" var="img" />
 </head>
 <body>
 	<h1>Add a Produit</h1>
 
 	<c:url var="addAction" value="/produit/add"></c:url>
-
-	<form:form action="${addAction}" commandName="produit">
+ 
+	<form:form action="${addAction}" commandName="produit" enctype="multipart/form-data">
 		<table>
 			<c:if test="${!empty produit.libelle}">
 				<tr>
@@ -84,6 +90,8 @@
 					
 					
 			</tr>
+			<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+				
 			<tr>
 				<td colspan="2"><c:if test="${!empty produit.libelle}">
 						<input type="submit" value="<spring:message text="Edit produit"/>" />
@@ -99,6 +107,7 @@
 		<table class="tg">
 			<tr>
 				<th width="80">ID</th>
+				<th width="120">photo </th>
 				<th width="120">libelle</th>
 				<th width="120">stock</th>
 				<th width="120">Categorie</th>
@@ -109,6 +118,7 @@
 			<c:forEach items="${listProduit}" var="produit">
 				<tr>
 					<td>${produit.id}</td>
+					<td> <img src="${img}/${produit.urlImg}" alt="" border="0" width="120" height="140" /></td>
 					<td>${produit.libelle}</td>
 					<td>${produit.stock}</td>
 					<td>${produit.categorie.nom}</td>

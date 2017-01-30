@@ -17,6 +17,7 @@ public class Produit {
 	private Categorie categorie;
 	
 	private int stock;
+	private String urlImg ;
 	
 	public Produit(){
 		super();
@@ -52,5 +53,14 @@ public class Produit {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+
+	public String getUrlImg() {
+		return urlImg;
+	}
+
+	public void setUrlImg(String urlImg) {
+		this.urlImg = urlImg;
+	}
+
 	
 }
