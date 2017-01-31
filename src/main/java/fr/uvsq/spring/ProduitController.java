@@ -50,7 +50,7 @@ public class ProduitController {
 		model.addAttribute("produit", new Produit());
 		model.addAttribute("listProduit", this.produitService.findAll());
 		model.addAttribute("listCategorie", this.categorieService.findAll());
-		return "produit"; 
+		return "produits"; 
 	}
 
 	@RequestMapping(value= "/produit/add", method = RequestMethod.POST)
