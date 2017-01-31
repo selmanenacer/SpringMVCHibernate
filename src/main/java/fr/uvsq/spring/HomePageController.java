@@ -40,15 +40,10 @@ public class HomePageController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String connexion(Model model) {
-		model.addAttribute("login", new Client());
-		return "login";
-	}
-	
+
 	@RequestMapping(value = "/enregistrer", method = RequestMethod.GET)
 	public String enregistrer(Model model) {
-		model.addAttribute("login", new Client());
+		model.addAttribute("client", new Client());
 		return "enregistrer";
 	}
 	

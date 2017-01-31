@@ -25,12 +25,12 @@ public class LoginController {
 		this.clientService = clientService;
 	}
 	
-	/*
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String listclients(Model model) {
 		model.addAttribute("login", new Client());
 		return "login";
-	}*/
+	}
 	
 	@RequestMapping(value= "/login", method = RequestMethod.POST)
 	public String getClient(@ModelAttribute("login") Client p,Model model, HttpServletRequest request){
@@ -42,9 +42,9 @@ public class LoginController {
 					request.getSession().setAttribute("client_S", c);
 					return "redirect:/";
 				}else if(c.getType()==2){
-					request.getSession().setAttribute("client_S", c);
+					request.getSession().setAttribute("admin_S", c);
 					model.addAttribute("admin" , c);
-					return "/";
+					return "adminHomePage";  
 				}
 			}else {
 				model.addAttribute("erreur" , "Mot de passe ou login incorrecte");
