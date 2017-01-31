@@ -1,8 +1,8 @@
+
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page session="true" contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -20,6 +20,7 @@
 <script type="text/javascript" src="${boxOver}"></script>
 </head>
 <body>
+<h1>${client_S}</h1>
 	<div id="main_container">
 		<div class="top_bar"></div>
 		<div id="header">

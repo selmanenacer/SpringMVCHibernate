@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <html>
 <head>
 	<title>client Page</title>
@@ -14,7 +14,7 @@
 </head>
 <body>
 <h1>
-	ajouter client
+	ajouter client ${client_S}
 </h1>
 
 <c:url var="addAction" value="/client/add" ></c:url>

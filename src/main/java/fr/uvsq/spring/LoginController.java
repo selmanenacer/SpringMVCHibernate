@@ -1,5 +1,7 @@
 package fr.uvsq.spring;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -31,19 +33,21 @@ public class LoginController {
 	}*/
 	
 	@RequestMapping(value= "/login", method = RequestMethod.POST)
-	public String getClient(@ModelAttribute("login") Client p,Model model){
+	public String getClient(@ModelAttribute("login") Client p,Model model, HttpServletRequest request){
 		
 			Client c = clientService.isValidClient(p.getEmail(), p.getPsw());
 			if(c != null){
 				if(c.getType()==1){
 					model.addAttribute("client" , c);
-					return "login";
+					request.getSession().setAttribute("client_S", c);
+					return "redirect:/";
 				}else if(c.getType()==2){
+					request.getSession().setAttribute("client_S", c);
 					model.addAttribute("admin" , c);
-					return "login";
+					return "/";
 				}
 			}else {
-				model.addAttribute("erreur" , "client inexistant");
+				model.addAttribute("erreur" , "Mot de passe ou login incorrecte");
 				return "login";
 			}
 			return "login";	
