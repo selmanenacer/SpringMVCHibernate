@@ -42,9 +42,9 @@ public class LoginController {
 					request.getSession().setAttribute("client_S", c);
 					return "redirect:/";
 				}else if(c.getType()==2){
-					request.getSession().setAttribute("client_S", c);
+					request.getSession().setAttribute("admin_S", c);
 					model.addAttribute("admin" , c);
-					return "/";
+					return "adminHomePage";  
 				}
 			}else {
 				model.addAttribute("erreur" , "Mot de passe ou login incorrecte");
