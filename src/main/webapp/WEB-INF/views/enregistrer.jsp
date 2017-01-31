@@ -15,11 +15,13 @@
 <meta http-equiv="Content-Type"
 	content="text/html; charset=windows-1252" />
 
-<spring:url value="/resources/style.css" var="css" />
+<spring:url value="/resources" var="css" />
 <spring:url value="/resources/js/boxOver.js" var="boxOver" />
 <spring:url value="/resources/images" var="img" />
 
-<link href="${css }" rel="stylesheet" type="text/css" />
+<link href="${css}/style.css" rel="stylesheet" type="text/css" />
+<link href="${css}/style_form.css" rel="stylesheet" type="text/css" />
+
 <script type="text/javascript" src="${boxOver }"></script>
 </head>
 <body>
@@ -124,81 +126,56 @@
 					<div class="center_prod_box_big">
 						<div class="contact_form">
 						
-						
-						<c:url var="addAction" value="/client/add" ></c:url>
+						<div class="login">
+  							<div class="login-triangle"></div>
+  							
+  							<c:url var="addAction" value="/client/add" ></c:url>
 
-						<form:form action="${addAction}" commandName="client">
-							<div class="form_row">
-								<c:if test="${!empty client.nom}">
-									<form:label class="contact" path="id"> <spring:message text="ID"/> </form:label>
-									<form:input class="contact_input" path="id" readonly="true" size="8"  disabled="true"  />
-									<form:hidden path="id"   />
-								</c:if>
-							</div>
+							<form:form action="${addAction}" commandName="client">
+								<div class="form_row">
+									<c:if test="${!empty client.nom}">
+										<form:label class="contact" path="id"> <spring:message text="ID"/> </form:label>
+										<form:input class="contact_input" path="id" readonly="true" size="8"  disabled="true"  />
+										<form:hidden path="id"   />
+									</c:if>
+								</div>
+								
 							
-							<div class="form_row">
-								<form:label class="contact" path="nom"> <spring:message text="nom" /> </form:label>
-								<form:input class="contact_input" path="nom" value="${user.nom }" />
-							</div>
+									<form:input placeholder="Nom" class="contact_input" path="nom" value="${user.nom }" />
+									<div class="form_row"></div>
+									<form:input placeholder="Prenom" class="contact_input" path="prenom" value="${user.prenom }"/>
+									<div class="form_row"></div>
+									<form:input placeholder="Email" class="contact_input" path="email" />
+									<div class="form_row"></div>
+									<form:input type="password" placeholder="Mot de passe" class="contact_input" path="psw" />
+									<div class="form_row"></div>
+									<form:input placeholder="Rue" class="contact_input" path="adresse.rue" value="${user.adresse.rue }"/>
+									<div class="form_row"></div>
+									<form:input placeholder="Ville" class="contact_input" path="adresse.ville" value="${user.adresse.ville }"/>
+									<div class="form_row"></div>
+									<form:input placeholder="Code postal" class="contact_input" path="adresse.codePostal" value="${user.adresse.codePostal }" />
+									<div class="form_row"></div>
+									<c:if test="${!empty client.nom && empty user.nom  }">
+										<input type="submit" value="<spring:message text="Edit client"/>" />
+									</c:if>
+									<div class="form_row"></div>
+									<c:if test="${empty client.nom or !empty user.nom }">
+										<input type="submit" value="<spring:message text="Inscripton"/>" />
+									</c:if>
 							
-							<div class="form_row">
-								<form:label class="contact" path="prenom"> <spring:message text="prenom"/> </form:label>
-								<form:input class="contact_input" path="prenom" value="${user.prenom }"/>
-							</div>
+							</form:form>
 							
-							<div class="form_row">
-								<form:label class="contact" path="email"> <spring:message text="email"/> </form:label>
-								<form:input class="contact_input" path="email" />
-							</div>
-							
-							<div class="form_row">
-								<form:label class="contact" path="psw"> <spring:message text="password"/> </form:label>
-								<form:password class="contact_input" path="psw" />
-							</div>
-							
-							<div class="form_row">
-								<form:label class="contact" path="adresse.rue"> <spring:message text="rue"/> </form:label>
-								<form:input class="contact_input" path="adresse.rue" value="${user.adresse.rue }"/>
-							</div>
-							
-							<div class="form_row">
-								<form:label class="contact" path="adresse.rue"> <spring:message text="rue"/> </form:label>
-								<form:input class="contact_input" path="adresse.rue" value="${user.adresse.rue }"/>
-							</div>
-							
-							<div class="form_row">
-								<form:label class="contact" path="adresse.ville"> <spring:message text="ville"/> </form:label>
-								<form:input class="contact_input" path="adresse.ville" value="${user.adresse.ville }"/>
-							</div>
-							
-							<div class="form_row">
-								<form:label class="contact" path="adresse.codePostal"> <spring:message text="code Postal"/> </form:label>
-								<form:input class="contact_input" path="adresse.codePostal" value="${user.adresse.codePostal }" />
-							</div>
-							
-							<div class="form_row">
-								<c:if test="${!empty client.nom && empty user.nom  }">
-									<input type="submit" value="<spring:message text="Edit client"/>" />
-								</c:if>
-							</div>
-							
-							<div class="form_row">
-								<c:if test="${empty client.nom or !empty user.nom }">
-									<input type="submit" value="<spring:message text="Add client"/>" />
-								</c:if>
-							</div>
-						
-						</form:form>
-						
-						<c:if test="${! empty user }">
-							<h1> Email exist   </h1>
-						</c:if>
+							<c:if test="${! empty user }">
+								<h1> Email exist   </h1>
+							</c:if>
+  							
+						</div>
 						
 						
 						</div>
 					</div>
 				</div>
-				<div class="bottom_prod_box_big"></div>
+				
 			</div>
 		</div>
 		<!-- end of center content -->

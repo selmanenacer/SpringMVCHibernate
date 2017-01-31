@@ -14,11 +14,13 @@
 <meta http-equiv="Content-Type"
 	content="text/html; charset=windows-1252" />
 
-<spring:url value="/resources/style.css" var="css" />
+<spring:url value="/resources" var="css" />
 <spring:url value="/resources/js/boxOver.js" var="boxOver" />
 <spring:url value="/resources/images" var="img" />
 
-<link href="${css }" rel="stylesheet" type="text/css" />
+<link href="${css}/style.css" rel="stylesheet" type="text/css" />
+<link href="${css}/style_form.css" rel="stylesheet" type="text/css" />
+
 <script type="text/javascript" src="${boxOver }"></script>
 </head>
 <body>
@@ -136,25 +138,21 @@
 					<div class="center_prod_box_big">
 
 						<div class="contact_form">
-
-							<!-- notre form -->
+						
+						<div class="login">
+  							<div class="login-triangle"></div>
+  
+  							<!-- notre form -->
 							<c:url var="loginAction" value="/login"></c:url>
 
 							<form:form action="${loginAction}" id="loginForm" method="post"
-								commandName="login">
-								
-								<div class="form_row">
-									<form:label   path="email" class="contact"> Email: </form:label>
-									<form:input id="email" name="email" path="email" class="contact_input"/>
-								</div>
-								<div class="form_row">
-									<form:label   path="psw" class="contact"> Mot de passe: </form:label>
-									<form:password id="psw" name="psw" path="psw" class="contact_input"/>
-								</div>
-								
-								<div class="form_row">
+								commandName="login">					
+									<div class="form_row"></div>
+									<form:input class="contact_input" placeholder="Email" id="email" name="email" path="email" />
+									<div class="form_row"></div>
+									<form:input class="contact_input" type="password" placeholder="Password" id="psw" name="psw" path="psw" />
+									<div class="form_row"></div>
 									<input type="submit" value="Connexion" class="sansLabel" />
-								</div>
 								
 							</form:form>
 							<c:if test="${!empty client}">
@@ -170,9 +168,8 @@
 								<h1>${erreur}</h1>
 
 							</c:if>
-
-
-
+						</div>
+  						
 						</div>
 
 					</div>
