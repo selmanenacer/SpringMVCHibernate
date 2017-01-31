@@ -50,7 +50,7 @@ public class ClientController {
 			return "client" ;
 		}
 		
-		return "redirect:/clients";
+		return "redirect:/login";
 		
 	}
 	
