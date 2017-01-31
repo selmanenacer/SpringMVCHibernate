@@ -23,13 +23,6 @@ public class ClientController {
 		this.clientService = clientService;
 	}
 	
-	@RequestMapping(value = "/clients", method = RequestMethod.GET)
-	public String listclients(Model model) {
-		model.addAttribute("client", new Client());
-		model.addAttribute("listClients", this.clientService.findAll());
-		return "client";
-	}
-	
 	//For add and update person both
 	@RequestMapping(value= "/client/add", method = RequestMethod.POST)
 	public String insert(@ModelAttribute("client") Client p , Model model){
@@ -54,6 +47,15 @@ public class ClientController {
 		
 	}
 	
+	/*
+	
+	@RequestMapping(value = "/clients", method = RequestMethod.GET)
+	public String listclients(Model model) {
+		model.addAttribute("client", new Client());
+		model.addAttribute("listClients", this.clientService.findAll());
+		return "client";
+	}
+	
 	@RequestMapping("/removeClient/{id}")
     public String removeClient(@PathVariable("id") int id){
 		
@@ -67,5 +69,7 @@ public class ClientController {
         model.addAttribute("listClients", this.clientService.findAll());
         return "client";
     }
+    
+    */
 	
 }

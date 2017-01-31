@@ -189,6 +189,12 @@
 							</div>
 						
 						</form:form>
+						
+						<c:if test="${! empty user }">
+							<h1> Email exist   </h1>
+						</c:if>
+						
+						
 						</div>
 					</div>
 				</div>
