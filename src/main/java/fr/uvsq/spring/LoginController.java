@@ -25,12 +25,12 @@ public class LoginController {
 		this.clientService = clientService;
 	}
 	
-	/*
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String listclients(Model model) {
 		model.addAttribute("login", new Client());
 		return "login";
-	}*/
+	}
 	
 	@RequestMapping(value= "/login", method = RequestMethod.POST)
 	public String getClient(@ModelAttribute("login") Client p,Model model, HttpServletRequest request){
