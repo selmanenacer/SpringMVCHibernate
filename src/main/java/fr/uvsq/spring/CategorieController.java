@@ -29,7 +29,7 @@ public class CategorieController {
 	public String listclients(Model model) {
 		model.addAttribute("categorie", new Categorie());
 		model.addAttribute("listCategorie", this.categorieService.findAll());
-		return "categorie";
+		return "categories";
 	}
 	
 	//For add and update person both
@@ -58,6 +58,6 @@ public class CategorieController {
 	    public String editClient(@PathVariable("id") int id, Model model){
 	        model.addAttribute("categorie", this.categorieService.findById(id));
 	        model.addAttribute("listClients", this.categorieService.findAll());
-	        return "categorie";
+	        return "categories";
 	    }
 }

@@ -47,29 +47,10 @@ public class ClientController {
 		
 	}
 	
-	/*
 	
-	@RequestMapping(value = "/clients", method = RequestMethod.GET)
-	public String listclients(Model model) {
-		model.addAttribute("client", new Client());
-		model.addAttribute("listClients", this.clientService.findAll());
-		return "client";
-	}
 	
-	@RequestMapping("/removeClient/{id}")
-    public String removeClient(@PathVariable("id") int id){
-		
-        this.clientService.delete(id); 
-        return "redirect:/clients";
-    }
- 
-    @RequestMapping("/editClient/{id}")
-    public String editClient(@PathVariable("id") int id, Model model){
-        model.addAttribute("client", this.clientService.findById(id));
-        model.addAttribute("listClients", this.clientService.findAll());
-        return "client";
-    }
+	
     
-    */
+    
 	
 }

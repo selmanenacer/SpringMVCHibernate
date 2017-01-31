@@ -28,7 +28,7 @@
 				<div class="search_text">
 					<a href="#">Advanced Search</a>
 				</div>
-				<input type="text" class="search_input" name="search" /> 
+				<input type="text" class="search_input" name="search" />
 			</div>
 			<div class="languages">
 				<div class="lang_text">Languages:</div>
@@ -85,33 +85,60 @@
 					name</span>
 			</div>
 			<div class="left_content">
-				<div class="title_box">Fonctions</div>
+				<div class="title_box">Fonction</div>
 				<ul class="left_menu">
-					
-					<li class="even"><a href="produits">Produits</a></li>
-					<li class="odd"><a href="categories">Categories</a></li>
-					<li class="even"><a href="clients">Commandes</a></li>
-					<li class="odd"><a href="clients">Clients</a></li>
+					<li class="odd"><a href="#">Liste Produits</a></li>
+					<li class="even"><a href="#">Ajouter Produit</a></li>
+					<li class="odd"><a href="#">Ajouter Categorie</a></li>
+					<li class="even"><a href="#">Liste Clients</a></li>
+					<li class="odd"><a href="#">Ajouter Client</a></li>
 					<li class="even"><a href="#">Compte Administrateur</a></li>
 				</ul>
 				<div class="title_box"></div>
 				<div class="border_box">
 					<div class="product_title"></div>
-					<div class="product_img">
-						
-					</div>
-					
+					<div class="product_img"></div>
+
 				</div>
-				
+
 			</div>
 			<!-- end of left content -->
 			<div class="center_content">
-				<div class="center_title_bar">Page Administrateur</div>
+				<div class="center_title_bar">Liste des Clients</div>
 				<div class="prod_box_big">
 					<div class="top_prod_box_big"></div>
 					<div class="center_prod_box_big">
 
-						
+						<c:if test="${!empty listClients}">
+							<table class="tg">
+								<tr>
+									<th width="80">ID</th>
+									<th width="120">nom</th>
+									<th width="120">prenom</th>
+									<th width="120">email</th>
+									<th width="120">Rue</th>
+									<th width="120">Ville</th>
+									<th width="120">code postal</th>
+									<th width="60">Edit</th>
+									<th width="60">Delete</th>
+								</tr>
+								<c:forEach items="${listClients}" var="client">
+									<tr>
+										<td>${client.id}</td>
+										<td>${client.nom}</td>
+										<td>${client.prenom}</td>
+										<td>${client.email}</td>
+										<td>${client.adresse.rue}</td>
+										<td>${client.adresse.ville}</td>
+										<td>${client.adresse.codePostal}</td>
+										<td><a href="<c:url value='/editClient/${client.id}' />">Edit</a></td>
+										<td><a
+											href="<c:url value='/removeClient/${client.id}' />">Delete</a></td>
+									</tr>
+								</c:forEach>
+							</table>
+						</c:if>
+
 
 					</div>
 					<div class="bottom_prod_box_big"></div>
@@ -123,16 +150,13 @@
 				<div class="shopping_cart">
 					<div class="cart_title"></div>
 					<div class="cart_details">
-						 <br /> <span class="border_cart"></span><span
-							class="price"></span>
+						<br /> <span class="border_cart"></span><span class="price"></span>
 					</div>
-					<div class="cart_icon">
-						
-					</div>
+					<div class="cart_icon"></div>
 				</div>
-				
-				
-				
+
+
+
 			</div>
 			<!-- end of right content -->
 		</div>
@@ -144,7 +168,7 @@
 			<div class="center_footer">
 				Template name. All Rights Reserved 2008<br /> <a
 					href="http://csscreme.com"><img src="${img }/csscreme.jpg"
-					alt="csscreme" border="0" /></a><br /> 
+					alt="csscreme" border="0" /></a><br />
 			</div>
 			<div class="right_footer">
 				<a href="#">home</a> <a href="#">about</a> <a href="#">sitemap</a> <a
