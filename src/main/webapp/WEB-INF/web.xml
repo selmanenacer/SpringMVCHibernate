@@ -8,9 +8,10 @@
 		</param-value>
   </context-param>
   <!-- The Usual Welcome File List -->
-  <welcome-file-list>
+  <!-- <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>

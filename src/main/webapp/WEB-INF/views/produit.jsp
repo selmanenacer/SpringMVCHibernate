@@ -155,7 +155,10 @@
 									<form:label path="stock" class="contact"> <spring:message text="stock" /> </form:label>
 									<form:input path="stock" class="contact_input"/>
 								</div>
-								
+									<div class="form_row">
+									<form:label path="stock" class="contact"> <spring:message text="prix" /> </form:label>
+									<form:input path="prix" class="contact_input"/>
+								</div>
 								<div class="form_row">
 									<form:label path="categorie.id" class="contact"> <spring:message text="categorie" /> </form:label>
 									<form:select path="categorie.id" >

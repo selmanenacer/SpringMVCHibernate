@@ -125,18 +125,23 @@
 			<!-- end of left content -->
 			<div class="center_content">
 				<div class="center_title_bar">Nouveauté</div>
+				
+				
+				
+				
+				<c:forEach items="${listProduit}" var="produit">
 				<div class="prod_box">
 					<div class="top_prod_box"></div>
 					<div class="center_prod_box">
 						<div class="product_title">
-							<a href="details.jsp">Segate 156 MX-VL</a>
+							<a href="details.jsp">${produit.libelle }</a>
 						</div>
 						<div class="product_img">
-							<a href="details.jsp"><img src="${img}/disc_segate.jpg"
-								alt="" border="0" /></a>
+							<a href="details.jsp"><img src="${img}/${produit.urlImg}"
+								alt="" border="0"  width="94" height="92" /></a>
 						</div>
 						<div class="prod_price">
-							<span class="reduce">35000DA</span> <span class="price">30000DA</span>
+							 <span class="price">${produit.prix }</span>
 						</div>
 					</div>
 					<div class="bottom_prod_box"></div>
@@ -147,183 +152,18 @@
 							href="details.jsp" class="prod_details">details</a>
 					</div>
 				</div>
-				<div class="prod_box">
-					<div class="top_prod_box"></div>
-					<div class="center_prod_box">
-						<div class="product_title">
-							<a href="details.jsp">Iphone Apple</a>
-						</div>
-						<div class="product_img">
-							<a href="details.jsp"><img src="${img}/p4.gif" alt=""
-								border="0" /></a>
-						</div>
-						<div class="prod_price">
-							<span class="price">27000DA</span>
-						</div>
-					</div>
-					<div class="bottom_prod_box"></div>
-					<div class="prod_details_tab">
-						<a href="#"
-							title="header=[Ajouter au panier] body=[&nbsp;] fade=[on]"><img
-							src="${img}/cart.gif" alt="" border="0" class="left_bt" /></a> <a
-							href="details.jsp" class="prod_details">details</a>
-					</div>
-				</div>
-				<div class="prod_box">
-					<div class="top_prod_box"></div>
-					<div class="center_prod_box">
-						<div class="product_title">
-							<a href="details.jsp">Samsung Webcam</a>
-						</div>
-						<div class="product_img">
-							<a href="details.jsp"><img src="${img}/p5.gif" alt=""
-								border="0" /></a>
-						</div>
-						<div class="prod_price">
-							<span class="reduce">1500DA</span> <span class="price">1000$</span>
-						</div>
-					</div>
-					<div class="bottom_prod_box"></div>
-					<div class="prod_details_tab">
-						<a href="#"
-							title="header=[Ajouter au panier] body=[&nbsp;] fade=[on]"><img
-							src="${img}/cart.gif" alt="" border="0" class="left_bt" /></a> <a
-							href="details.jsp" class="prod_details">details</a>
-					</div>
-				</div>
-				<div class="prod_box">
-					<div class="top_prod_box"></div>
-					<div class="center_prod_box">
-						<div class="product_title">
-							<a href="details.jsp">Motorola 156 MX-VL</a>
-						</div>
-						<div class="product_img">
-							<a href="details.jsp"><img src="${img}/laptop.gif" alt=""
-								border="0" /></a>
-						</div>
-						<div class="prod_price">
-							<span class="reduce">40000DA</span> <span class="price">37000DA</span>
-						</div>
-					</div>
-					<div class="bottom_prod_box"></div>
-					<div class="prod_details_tab">
-						<a href="#"
-							title="header=[Ajouter au panier] body=[&nbsp;] fade=[on]"><img
-							src="${img}/cart.gif" alt="" border="0" class="left_bt" /></a> <a
-							href="details.jsp" class="prod_details">details</a>
-					</div>
-				</div>
-				<div class="prod_box">
-					<div class="top_prod_box"></div>
-					<div class="center_prod_box">
-						<div class="product_title">
-							<a href="details.jsp">Iphone Apple</a>
-						</div>
-						<div class="product_img">
-							<a href="details.jsp"><img src="${img}/p4.gif" alt=""
-								border="0" /></a>
-						</div>
-						<div class="prod_price">
-							<span class="price">40000DA</span>
-						</div>
-					</div>
-					<div class="bottom_prod_box"></div>
-					<div class="prod_details_tab">
-						<a href="#"
-							title="header=[Ajouter au panier] body=[&nbsp;] fade=[on]"><img
-							src="${img}/cart.gif" alt="" border="0" class="left_bt" /></a> <a
-							href="details.jsp" class="prod_details">details</a>
-					</div>
-				</div>
-				<div class="prod_box">
-					<div class="top_prod_box"></div>
-					<div class="center_prod_box">
-						<div class="product_title">
-							<a href="details.jsp">Samsung Webcam</a>
-						</div>
-						<div class="product_img">
-							<a href="details.jsp"><img src="${img}/p5.gif" alt=""
-								border="0" /></a>
-						</div>
-						<div class="prod_price">
-							<span class="reduce">2500DA</span> <span class="price">2000DA</span>
-						</div>
-					</div>
-					<div class="bottom_prod_box"></div>
-					<div class="prod_details_tab">
-						<a href="#"
-							title="header=[Ajouter au panier] body=[&nbsp;] fade=[on]"><img
-							src="${img}/cart.gif" alt="" border="0" class="left_bt" /></a> <a
-							href="details.jsp" class="prod_details">details</a>
-					</div>
-				</div>
-				<div class="center_title_bar">Produits Recommandés</div>
-				<div class="prod_box">
-					<div class="top_prod_box"></div>
-					<div class="center_prod_box">
-						<div class="product_title">
-							<a href="details.jsp">Motorola 156 MX-VL</a>
-						</div>
-						<div class="product_img">
-							<a href="details.jsp"><img src="${img}/laptop.gif" alt=""
-								border="0" /></a>
-						</div>
-						<div class="prod_price">
-							<span class="reduce">50000DA</span> <span class="price">45000DA</span>
-						</div>
-					</div>
-					<div class="bottom_prod_box"></div>
-					<div class="prod_details_tab">
-						<a href="#"
-							title="header=[Ajouter au panier] body=[&nbsp;] fade=[on]"><img
-							src="${img}/cart.gif" alt="" border="0" class="left_bt" /></a> <a
-							href="details.jsp" class="prod_details">details</a>
-					</div>
-				</div>
-				<div class="prod_box">
-					<div class="top_prod_box"></div>
-					<div class="center_prod_box">
-						<div class="product_title">
-							<a href="details.jsp">Iphone Apple</a>
-						</div>
-						<div class="product_img">
-							<a href="details.jsp"><img src="${img}/p4.gif" alt=""
-								border="0" /></a>
-						</div>
-						<div class="prod_price">
-							<span class="price">43000DA</span>
-						</div>
-					</div>
-					<div class="bottom_prod_box"></div>
-					<div class="prod_details_tab">
-						<a href="#"
-							title="header=[Ajouter au panier] body=[&nbsp;] fade=[on]"><img
-							src="${img}/cart.gif" alt="" border="0" class="left_bt" /></a> <a
-							href="details.jsp" class="prod_details">details</a>
-					</div>
-				</div>
-				<div class="prod_box">
-					<div class="top_prod_box"></div>
-					<div class="center_prod_box">
-						<div class="product_title">
-							<a href="details.jsp">Samsung Webcam</a>
-						</div>
-						<div class="product_img">
-							<a href="details.jsp"><img src="${img}/p5.gif" alt=""
-								border="0" /></a>
-						</div>
-						<div class="prod_price">
-							<span class="reduce">3000DA</span> <span class="price">2700DA</span>
-						</div>
-					</div>
-					<div class="bottom_prod_box"></div>
-					<div class="prod_details_tab">
-						<a href="#"
-							title="header=[Ajouter au panier] body=[&nbsp;] fade=[on]"><img
-							src="${img}/cart.gif" alt="" border="0" class="left_bt" /></a> <a
-							href="details.jsp" class="prod_details">details</a>
-					</div>
-				</div>
+				
+				</c:forEach>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 
 			</div>
 			<!-- end of center content -->
