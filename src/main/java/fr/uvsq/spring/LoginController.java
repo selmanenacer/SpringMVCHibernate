@@ -44,7 +44,7 @@ public class LoginController {
 				}else if(c.getType()==2){
 					request.getSession().setAttribute("admin_S", c);
 					model.addAttribute("admin" , c);
-					return "adminHomePage";  
+					return "redirect:/adminHomePage";  
 				}
 			}else {
 				model.addAttribute("erreur" , "Mot de passe ou login incorrecte");

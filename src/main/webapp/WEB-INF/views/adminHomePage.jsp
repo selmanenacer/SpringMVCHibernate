@@ -106,50 +106,12 @@
 			</div>
 			<!-- end of left content -->
 			<div class="center_content">
-				<div class="center_title_bar">Connexion</div>
+				<div class="center_title_bar">Page Administrateur</div>
 				<div class="prod_box_big">
 					<div class="top_prod_box_big"></div>
 					<div class="center_prod_box_big">
 
-						<div class="contact_form">
-
-							<!-- notre form -->
-							<c:url var="loginAction" value="/login"></c:url>
-
-							<form:form action="${loginAction}" id="loginForm" method="post"
-								commandName="login">
-								
-								<div class="form_row">
-									<form:label   path="email" class="contact"> Email: </form:label>
-									<form:input id="email" name="email" path="email" class="contact_input"/>
-								</div>
-								<div class="form_row">
-									<form:label   path="psw" class="contact"> Mot de passe: </form:label>
-									<form:password id="psw" name="psw" path="psw" class="contact_input"/>
-								</div>
-								
-								<div class="form_row">
-									<input type="submit" value="Connexion" class="sansLabel" />
-								</div>
-								
-							</form:form>
-							<c:if test="${!empty client}">
-								<h1>client ${client.nom} ${client.prenom} connecter !!</h1>
-
-							</c:if>
-
-							<c:if test="${!empty admin}">
-								<h1>admin ${admin.nom} ${admin.prenom} connecter !!</h1>
-
-							</c:if>
-							<c:if test="${!empty erreur}">
-								<h1>${erreur}</h1>
-
-							</c:if>
-
-
-
-						</div>
+						
 
 					</div>
 					<div class="bottom_prod_box_big"></div>
