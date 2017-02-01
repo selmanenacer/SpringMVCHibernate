@@ -63,10 +63,11 @@
 					<li class="divider"></li>
 
 					<c:choose>
-						<c:when test="${sessionScope.client == 'vrai'}">
+						<c:when test="${!empty client_S}">
 
-							<li><a href="" class="nav6">${sessionScope.nom}
-									${sessionScope.prenom}</a></li>
+							<li><a href="" class="nav6"> <img src="${img }/compte.jpg" alt=""
+					border="0" />${client_S.nom}
+									${client_S.prenom}</a></li>
 							<li class="divider"></li>
 							<li><a href="deconnexion" class="nav6">Deconnexion</a></li>
 						</c:when>

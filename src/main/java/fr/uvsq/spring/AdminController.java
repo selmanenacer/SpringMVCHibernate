@@ -33,7 +33,7 @@ public class AdminController {
 		}
 	}
 
-
+/*
 	@RequestMapping(value = "/clients", method = RequestMethod.GET)
 	public String listclients(Model model, HttpServletRequest request) {
 		if(request.getSession().getAttribute("admin_S")==null){
@@ -59,5 +59,5 @@ public class AdminController {
 		return "client";
 	}
 
-
+*/
 }
