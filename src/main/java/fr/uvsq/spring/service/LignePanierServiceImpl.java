@@ -45,4 +45,11 @@ public class LignePanierServiceImpl implements LignePanierService{
 		this.lignePanierDAO.delete(id);
 	}
 
+	@Override
+	@Transactional
+	public int existProductClient(int id_produit, int id_client) {
+		// TODO Auto-generated method stub
+		return this.lignePanierDAO.existProductClient(id_produit, id_client);
+	}
+
 }

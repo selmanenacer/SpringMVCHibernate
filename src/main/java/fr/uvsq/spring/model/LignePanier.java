@@ -1,6 +1,5 @@
 package fr.uvsq.spring.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +15,7 @@ public class LignePanier {
 	private int id;
 	private int quantite;
 	private double montant;
-	@OneToOne (cascade = CascadeType.ALL)
+	@OneToOne 
 	private Produit produit;
 	
 	@ManyToOne 
@@ -56,6 +55,14 @@ public class LignePanier {
 	
 	public void setProduit(Produit produit) {
 		this.produit = produit;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 	
 }

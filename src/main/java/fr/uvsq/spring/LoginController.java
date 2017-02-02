@@ -19,6 +19,7 @@ import fr.uvsq.spring.service.ClientService;
 public class LoginController {
 
 	private ClientService clientService ;
+	
 
 	@Autowired(required=true)
 	@Qualifier(value="clientService")

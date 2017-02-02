@@ -2,6 +2,7 @@ package fr.uvsq.spring.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -62,6 +63,24 @@ public class LignePanierDAOImpl  implements LignePanierDAO {
 			session.delete(p);
 		}
 		logger.info("LignePanier deleted successfully, LignePanier details="+p);
+	}
+
+	@Override
+	public int existProductClient(int id_produit, int id_client) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from LignePanier where client_id = :id_client and produit_id = :id_produit");
+		query.setParameter("id_produit", id_produit);
+		query.setParameter("id_client", id_client);
+		List list = query.list();
+		if(list.size()>0){
+			LignePanier lignePanier = (LignePanier)list.get(0);
+			logger.info("LignePanier updated successfully, LignePanier details= "+lignePanier.getQuantite());
+			return lignePanier.getId();
+		}else{
+			logger.info("LignePanier not exist");
+			return -1;
+		}
+		
 	}
 
 }

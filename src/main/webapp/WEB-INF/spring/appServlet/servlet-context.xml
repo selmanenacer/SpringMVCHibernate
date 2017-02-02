@@ -61,7 +61,7 @@
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 	
-	<beans:bean id="imageBlobDAO" class="fr.uvsq.spring.dao.ImageBlobDAOImpl">
+	<beans:bean id="lignePanierDAO" class="fr.uvsq.spring.dao.LignePanierDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 	
@@ -89,8 +89,8 @@
 		<beans:property name="produitDAO" ref="produitDAO"></beans:property>
 	</beans:bean>
 	
-	<beans:bean id="imageBlobService" class="fr.uvsq.spring.service.ImageBlobServiceImpl">
-		<beans:property name="imageBlobDAO" ref="imageBlobDAO"></beans:property>
+	<beans:bean id="lignePanierService" class="fr.uvsq.spring.service.LignePanierServiceImpl">
+		<beans:property name="lignePanierDAO" ref="lignePanierDAO"></beans:property>
 	</beans:bean>
 	
 	

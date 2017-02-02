@@ -1,11 +1,14 @@
 package fr.uvsq.spring.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -30,12 +33,26 @@ public class Client {
 	@OneToMany(mappedBy="client")
 	private Set<Commande> commande = new HashSet<Commande>();
 	
+	@OneToMany(mappedBy="client" ,fetch = FetchType.EAGER)
+	private List<LignePanier> lignePanier = new ArrayList<LignePanier>();
+	
 	public Client() {
 		super();
-		
 	}
-
 	
+	public Client(Client client) {
+		super();
+		this.adresse=client.adresse;
+		this.commande=client.commande;
+		this.email=client.email;
+		this.id=client.id;
+		this.lignePanier=client.lignePanier;
+		this.nom=client.nom ;
+		this.prenom=client.prenom;
+		this.psw=client.psw ;
+		this.tel =client.tel ;
+		this.type=client.type;
+	}
 
 	public Client(int id, String nom, String prenom, String email, String psw, int tel) {
 		super();
@@ -120,6 +137,18 @@ public class Client {
 
 	public void setCommande(Set<Commande> commande) {
 		this.commande = commande;
+	}
+
+
+
+	public List<LignePanier> getLignePanier() {
+		return lignePanier;
+	}
+
+
+
+	public void setLignePanier(List<LignePanier> lignePanier) {
+		this.lignePanier = lignePanier;
 	}
 	
 	
