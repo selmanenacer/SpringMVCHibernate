@@ -28,6 +28,13 @@ public class HomePageController {
 	private CategorieService categorieService ;
 	private LignePanierService  lignePanierService;
 	
+	
+	@Autowired(required=true)
+	@Qualifier(value="clientService")
+	public void setClientService(ClientService clientService) {
+		this.clientService = clientService;
+	}
+
 	@Autowired(required=true)
 	@Qualifier(value="produitService")
 	public void setProduitService(ProduitService produitService) {
@@ -50,7 +57,6 @@ public class HomePageController {
 	public String home(Model model , HttpServletRequest request) {
 		model.addAttribute("listProduit", this.produitService.findAll());
 		model.addAttribute("listCategorie", this.categorieService.findAll());
-		//Client client =  (Client) request.getSession().getAttribute("client_S");
 		
 		return "index";
 	}
@@ -64,11 +70,7 @@ public class HomePageController {
 		if(id_lignePanier!=-1){
 			LignePanier lp = lignePanierService.findById(id_lignePanier);
 			lp.setQuantite(lp.getQuantite()+1);
-			System.err.println("_________quantité ___________"+lp.getQuantite());
-			//request.getSession().setAttribute("qnt", lp.getQuantite());
-			
 			lp.setMontant(lp.getMontant()+p.getPrix());
-			System.out.println(" je ss la ") ;
 			lignePanierService.update(lp);
 			
 		}else{
@@ -81,9 +83,7 @@ public class HomePageController {
 			lp.setClient(c);
 			lignePanierService.insert(lp);
 		}
-		System.err.println("____________________"+c.getLignePanier().get(0).getQuantite());
-		request.getSession().removeAttribute("client_S");
-		request.getSession().setAttribute("client_S", c);
+		request.getSession().setAttribute("client_S", clientService.findById(c.getId()));
 		
 		
 		
