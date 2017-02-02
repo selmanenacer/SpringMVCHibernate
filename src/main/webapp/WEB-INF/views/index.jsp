@@ -65,8 +65,7 @@
 					<c:choose>
 						<c:when test="${!empty client_S}">
 
-							<li><a href="" class="nav6"> <img src="${img }/compte.jpg" alt=""
-					border="0" />${client_S.nom}
+							<li><a href="" class="nav6">${client_S.nom}
 									${client_S.prenom}</a></li>
 							<li class="divider"></li>
 							<li><a href="deconnexion" class="nav6">Deconnexion</a></li>
