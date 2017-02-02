@@ -68,7 +68,7 @@
 							<li><a href="" class="nav6">${client_S.nom}
 									${client_S.prenom}</a></li>
 							<li class="divider"></li>
-							<li><a href="deconnexion" class="nav6">Deconnexion</a></li>
+							<li><a href="<c:url value='/logout' />" class="nav6">Deconnexion</a></li>
 						</c:when>
 						<c:otherwise>
 							<li> <a href="<c:url value='/login' />" class="nav6" >Connexion</a></li>
@@ -77,7 +77,9 @@
 					</c:choose>
 
 				</ul>
-				<div class="right_menu_corner"></div>
+				
+			   
+							<div class="right_menu_corner"></div>
 			</div>
 			<!-- end of menu tab -->
 			<div class="crumb_navigation">
@@ -130,29 +132,32 @@
 				
 				
 				<c:forEach items="${listProduit}" var="produit">
-				<div class="prod_box">
-					<div class="top_prod_box"></div>
-					<div class="center_prod_box">
-						<div class="product_title">
-							<a href="details.jsp">${produit.libelle }</a>
+					<div class="prod_box">
+						<div class="top_prod_box"></div>
+						<div class="center_prod_box">
+							<div class="product_title">
+								<a href="details.jsp">${produit.libelle }</a>
+							</div>
+							<div class="product_img">
+								<a href="details.jsp"><img src="${img}/${produit.urlImg}"
+									alt="" border="0"  width="94" height="92" /></a>
+							</div>
+							<div class="prod_price">
+								 <span class="price">${produit.prix }</span>
+							</div>
 						</div>
-						<div class="product_img">
-							<a href="details.jsp"><img src="${img}/${produit.urlImg}"
-								alt="" border="0"  width="94" height="92" /></a>
-						</div>
-						<div class="prod_price">
-							 <span class="price">${produit.prix }</span>
+						<div class="bottom_prod_box"></div>
+						
+						<div class="prod_details_tab">
+							<c:if test="${!empty client_S }">
+							<a href="#"
+								title="header=[Ajouter au panier] body=[&nbsp;] fade=[on]"><img
+								src="${img}/cart.gif" alt="" border="0" class="left_bt" /></a> 
+							</c:if>	
+								<a href="details.jsp" class="prod_details">details</a>
 						</div>
 					</div>
-					<div class="bottom_prod_box"></div>
-					<div class="prod_details_tab">
-						<a href="#"
-							title="header=[Ajouter au panier] body=[&nbsp;] fade=[on]"><img
-							src="${img}/cart.gif" alt="" border="0" class="left_bt" /></a> <a
-							href="details.jsp" class="prod_details">details</a>
-					</div>
-				</div>
-				
+					
 				</c:forEach>
 				
 				

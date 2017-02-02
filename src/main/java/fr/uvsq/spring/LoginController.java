@@ -1,6 +1,7 @@
 package fr.uvsq.spring;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -51,5 +52,11 @@ public class LoginController {
 				return "login";
 			}
 			return "login";	
+	}
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(Model model ,  HttpServletRequest request) {
+		HttpSession s = request.getSession();
+		s.invalidate();
+		return "redirect:/";
 	}
 }
