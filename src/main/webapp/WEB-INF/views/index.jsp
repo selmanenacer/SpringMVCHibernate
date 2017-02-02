@@ -135,9 +135,6 @@
 			<div class="center_content">
 				<div class="center_title_bar">Nouveauté</div>
 				
-				
-				
-				
 				<c:forEach items="${listProduit}" var="produit">
 					<div class="prod_box">
 						<div class="top_prod_box"></div>
@@ -157,7 +154,7 @@
 						
 						<div class="prod_details_tab">
 							<c:if test="${!empty client_S }">
-							<a href="<c:url value="/${produit.id }" />"
+							<a href="<c:url value="/add/${produit.id }" />"
 								title="header=[Ajouter au panier] body=[&nbsp;] fade=[on]"><img
 								src="${img}/cart.gif" alt="" border="0" class="left_bt" /></a> 
 							</c:if>	
@@ -182,16 +179,26 @@
 			<div class="right_content">
 				<div class="shopping_cart">
 					<div class="cart_title">Panier</div>
-					<div class="cart_details">
-						3 items <br /> <span class="border_cart"></span> Total: <span
-							class="price">350$</span>
+						<c:if test="${!empty client_S }">
+							<c:set var="total2" value="<%=Integer.valueOf(0)%>" />
+							<c:set var="nbr" value="<%=Integer.valueOf(0)%>" />
+							<c:forEach items="${client_S.lignePanier}" var="lignePanier2">
+								<c:set var="total2" value="${total2 + lignePanier2.produit.prix*lignePanier2.quantite }" />
+								<c:set var="nbr" value="${nbr + 1 }" />
+							</c:forEach>		
+								<div class="cart_details">
+									<c:out value="${nbr }"></c:out> items <br /> <span class="border_cart"></span> Total: <span
+										class="price"> <c:out value="${total2 }"></c:out></span>
+								</div>
+								
+								<div class="cart_icon">
+									<a  title="header=[Checkout] body=[&nbsp;] fade=[on]"><img
+										src="${img}/shoppingcart.png" alt="" width="48" height="48"
+										border="0" /></a>
+								</div>
+							
+						</c:if>
 					</div>
-					<div class="cart_icon">
-						<a href="#" title="header=[Checkout] body=[&nbsp;] fade=[on]"><img
-							src="${img}/shoppingcart.png" alt="" width="48" height="48"
-							border="0" /></a>
-					</div>
-				</div>
 				<div class="title_box">Nouveauté</div>
 				<div class="border_box">
 					<div class="product_title">
@@ -252,7 +259,10 @@
 					<li>
 						<span class="cd-qty"> ${lignePanier.quantite } x</span> ${lignePanier.produit.libelle }
 						<div class="cd-price"> ${lignePanier.produit.prix }</div>
-						<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+						<!-- nacer changements -->
+							<a href="<c:url value="/remove/${lignePanier.produit.id }" />" class="cd-item-remove cd-img-replace">Remove</a>
+						<!-- fin nacer changements -->	
+						
 					</li>
 					<c:set var="total" value="${total + lignePanier.produit.prix*lignePanier.quantite }" />
 				</c:forEach>	

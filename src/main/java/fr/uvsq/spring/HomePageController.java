@@ -60,11 +60,11 @@ public class HomePageController {
 		
 		return "index";
 	}
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String panier(Model model ,@PathVariable("id") int id ,HttpServletRequest request ) {
+	
+	@RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
+	public String panierAdd(Model model ,@PathVariable("id") int id ,HttpServletRequest request ) {
 		Produit p = produitService.findById(id) ;
 		Client c = (Client) request.getSession().getAttribute("client_S");
-		
 		
 		int id_lignePanier = lignePanierService.existProductClient(p.getId(), c.getId());
 		if(id_lignePanier!=-1){
@@ -84,12 +84,18 @@ public class HomePageController {
 			lignePanierService.insert(lp);
 		}
 		request.getSession().setAttribute("client_S", clientService.findById(c.getId()));
-		
-		
-		
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
+	public String panierRemove(Model model ,@PathVariable("id") int id ,HttpServletRequest request ) {
+		Produit p = produitService.findById(id) ;
+		Client c = (Client) request.getSession().getAttribute("client_S");	
+		int id_lignePanier = lignePanierService.existProductClient(p.getId(), c.getId());
+		this.lignePanierService.delete(id_lignePanier);
+		request.getSession().setAttribute("client_S", clientService.findById(c.getId()));
+		return "redirect:/";
+	}
 
 	@RequestMapping(value = "/enregistrer", method = RequestMethod.GET)
 	public String enregistrer(Model model) {
