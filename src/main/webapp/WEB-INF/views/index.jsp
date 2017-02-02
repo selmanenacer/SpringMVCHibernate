@@ -10,14 +10,20 @@
 <title>Electronix Store</title>
 <meta http-equiv="Content-Type"
 	content="text/html; charset=windows-1252" />
-<spring:url value="/resources/style.css" var="css" />
-<spring:url value="/resources/js/boxOver.js" var="boxOver" />
+<spring:url value="/resources" var="css" />
+<spring:url value="/resources/js" var="js" />
 <spring:url value="/resources/images" var="img" />
-<link rel="stylesheet" type="text/css" href="${css}" />
-<!--[if IE 6]>
-<link rel="stylesheet" type="text/css" href="iecss.css" />
-<![endif]-->
-<script type="text/javascript" src="${boxOver}"></script>
+
+
+<link rel="stylesheet" type="text/css" href="${css}/style.css" />
+<link rel="stylesheet" type="text/css" href="${css}/style1.css" />
+
+<script type="text/javascript" src="${js }/boxOver.js"></script>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+
+<script src="${js}/modernizr.js"></script> <!-- Modernizr -->
+
+
 </head>
 <body>
 <h1>${client_S}</h1>
@@ -75,16 +81,17 @@
 						</c:otherwise>
 
 					</c:choose>
-
+					
+					<li id="cd-cart-trigger" class="nav10">
+						<a class="cd-img-replace" href="#0">Cart</a>
+					</li>
+					
 				</ul>
-				
-			   
-							<div class="right_menu_corner"></div>
+			  
+			<div class="right_menu_corner"></div>
 			</div>
 			<!-- end of menu tab -->
-			<div class="crumb_navigation">
-				Navigation: <span class="current">Accueil</span>
-			</div>
+			
 			<div class="left_content">
 				<div class="title_box">Categories</div>
 				<ul class="left_menu">
@@ -233,5 +240,59 @@
 		</div>
 	</div>
 	<!-- end of main_container -->
+	
+	<div id="cd-shadow-layer"></div>
+
+	<div id="cd-cart">
+		<h2>Cart</h2>
+		<ul class="cd-cart-items">
+			<li>
+				<span class="cd-qty">1x</span> Product Name
+				<div class="cd-price">$9.99</div>
+				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+			</li>
+
+			<li>
+				<span class="cd-qty">2x</span> Product Name
+				<div class="cd-price">$19.98</div>
+				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+			</li>
+			<li>
+				<span class="cd-qty">2x</span> Product Name
+				<div class="cd-price">$19.98</div>
+				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+			</li>
+			<li>
+				<span class="cd-qty">2x</span> Product Name
+				<div class="cd-price">$19.98</div>
+				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+			</li>
+			<li>
+				<span class="cd-qty">2x</span> Product Name
+				<div class="cd-price">$19.98</div>
+				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+			</li>
+
+			<li>
+				<span class="cd-qty">1x</span> Product Name
+				<div class="cd-price">$9.99</div>
+				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
+			</li>
+		</ul> <!-- cd-cart-items -->
+
+		<div class="cd-cart-total">
+			<p>Total <span>$39.96</span></p>
+		</div> <!-- cd-cart-total -->
+
+		<a href="#0" class="checkout-btn">Checkout</a>
+		
+		<p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>
+	</div> <!-- cd-cart -->
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="${js}/main.js"></script> <!-- Gem jQuery -->
+	
+	
+	
 </body>
 </html>
