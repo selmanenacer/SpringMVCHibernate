@@ -1,7 +1,6 @@
 package fr.uvsq.spring;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -61,6 +60,30 @@ public class HomePageController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String listclients(Model model) {
+		model.addAttribute("login", new Client());
+		model.addAttribute("listCategorie", this.categorieService.findAll());
+		model.addAttribute("listConstructeurs", this.produitService.getListConstructeurs());
+		return "login";
+	}
+	
+	@RequestMapping(value = "/enregistrer", method = RequestMethod.GET)
+	public String enregistrer(Model model) {
+		model.addAttribute("client", new Client());
+		model.addAttribute("listCategorie", this.categorieService.findAll());
+		model.addAttribute("listConstructeurs", this.produitService.getListConstructeurs());
+		return "enregistrer";
+	}
+	
+	@RequestMapping(value = "/commander", method = RequestMethod.GET )
+	public String commander(Model model , HttpServletRequest request) {
+		//model.addAttribute("listProduit", this.produitService.findAll());
+		//model.addAttribute("listCategorie", this.categorieService.findAll());
+		//model.addAttribute("listConstructeurs", this.produitService.getListConstructeurs());
+		return "index";
+	}
+	
 	
 	@RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
 	public String panierAdd(Model model ,@PathVariable("id") int id ,HttpServletRequest request ) {
@@ -98,11 +121,7 @@ public class HomePageController {
 		return "redirect:/";
 	}
 
-	@RequestMapping(value = "/enregistrer", method = RequestMethod.GET)
-	public String enregistrer(Model model) {
-		model.addAttribute("client", new Client());
-		return "enregistrer";
-	}
+	
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) {

@@ -146,6 +146,7 @@ a.lang {
 	width: 400px;
 	float: left;
 	padding: 0 0 0 30px;
+	margin-top: 40px;
 }
 
 .oferta_text {
@@ -370,6 +371,7 @@ span.current {
 .left_content {
 	width: 196px;
 	float: left;
+	padding: 5px 0 0 0;
 }
 
 .title_box {

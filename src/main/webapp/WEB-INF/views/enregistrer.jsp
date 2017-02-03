@@ -19,17 +19,30 @@
 <spring:url value="/resources/js/boxOver.js" var="boxOver" />
 <spring:url value="/resources/images" var="img" />
 
-<link href="${css}/style.css" rel="stylesheet" type="text/css" />
-<link href="${css}/style_form.css" rel="stylesheet" type="text/css" />
-
+<link href="${css }/style.css" rel="stylesheet" type="text/css" />
+<link href="${css }/style1.css" rel="stylesheet" type="text/css" />
+<link href="${css }/style_form.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${boxOver }"></script>
 </head>
 <body>
 	<div id="main_container">
-		<div class="top_bar"></div>
+		<div class="top_bar">
+			<div class="top_search">
+				<div class="search_text">
+					<p >Search</p>
+				</div>
+				<input type="text" class="search_input" name="search" /> <input
+					type="image" src="${img }/search.gif" class="search_bt" />
+			</div>
+			<div class="languages">
+				<div class="lang_text">Languages:</div>
+				<p class="lang"><img src="${img }/en.gif" alt="" border="0" /></p> 
+				
+			</div>
+		</div>
 		<div id="header">
 			<div id="logo">
-				<a href="#"><img src="${img}/logo.png" alt="" border="0"
+				<a href=""><img src="${img}/logo.png" alt="" border="0"
 					width="237" height="140" /></a>
 			</div>
 			<div class="oferte_content">
@@ -39,8 +52,10 @@
 				<div class="oferta">
 					<div class="oferta_content">
 						<div class="oferta_details">
-							<div class="oferta_title">Bienvenue sur electronix site de
-								vente de prosuits informatique</div>
+							<div class="oferta_title">Bienvenue sur eloctronix site de
+								vente de produits informatique</div>
+							<div class="oferta_text">Divers produits informatique de
+								grande marque et &agrave; bas prix</div>
 						</div>
 					</div>
 				</div>
@@ -48,73 +63,57 @@
 					<img src="${img}/header_divider.png" alt="" width="1" height="164" />
 				</div>
 			</div>
-			<!-- end of oferte_content-->
 		</div>
+		<!-- end of oferte_content-->
 		<div id="main_content">
 			<div id="menu_tab">
 				<div class="left_menu_corner"></div>
 				<ul class="menu">
-					<li><a href="index.jsp" class="nav1"> Acceuil</a></li>
-					<li class="divider"></li>
-					<li><a href="#" class="nav2">Produits</a></li>
-					<li class="divider"></li>
-					<li><a href="#" class="nav3">Specials</a></li>
-					<li class="divider"></li>
-
-					<li><a href="#" class="nav4">Enregistrer</a></li>
+					<li><a href="<c:url value='/' />" class="nav1"> Accueil</a></li>
 					<li class="divider"></li>
 					<c:choose>
-						<c:when test="${sessionScope.client == 'vrai'}">
-
-							<li><a href="" class="nav6">${sessionScope.nom}
-									${sessionScope.prenom}</a></li>
+						<c:when test="${!empty client_S}">
+							<li><a href="" class="nav6">${client_S.nom}
+									${client_S.prenom}</a></li>
 							<li class="divider"></li>
-							<li><a href="deconnexion" class="nav6">Deconnexion</a></li>
+							<li><a href="<c:url value='/logout' />" class="nav6">Deconnexion</a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="connexion.jsp" class="nav6">Connexion</a></li>
+							<li> <a href="<c:url value='/login' />" class="nav6" >Connexion</a></li>
 						</c:otherwise>
-
 					</c:choose>
 				</ul>
 				<div class="right_menu_corner"></div>
 			</div>
 			<!-- end of menu tab -->
-			<div class="crumb_navigation">
-				Navigation: <a href="#">Home</a> &lt; <span class="current">Category
-					name</span>
-			</div>
 			<div class="left_content">
 				<div class="title_box">Categories</div>
 				<ul class="left_menu">
-					<li class="odd"><a href="#">Processeur</a></li>
-					<li class="even"><a href="#">Carte Mére</a></li>
-					<li class="odd"><a href="#">Ordinateur</a></li>
-					<li class="even"><a href="#">Laptops &amp; Notebooks</a></li>
-					<li class="odd"><a href="#">Carte Graphique</a></li>
-					<li class="even"><a href="#">Disque Dur</a></li>
-					<li class="odd"><a href="#">Alimentation</a></li>
-					<li class="even"><a href="#">Carte Reseaux</a></li>
-					<li class="odd"><a href="#">Ecran PC</a></li>
-
+					<c:forEach items="${listCategorie}" var="categorie">
+						<li class="odd"><a href="">${categorie.nom}</a></li>
+					</c:forEach>
 				</ul>
-				<div class="title_box">Produits Special</div>
+				<div class="title_box">- 30 %</div>
 				<div class="border_box">
-					<div class="product_title">Motorola 156 MX-VL</div>
+					<div class="product_title">
+						<a href="">Sonny 156 MX-VL</a>
+					</div>
 					<div class="product_img">
-						<a href="#"><img src="${img}/laptop.png" alt="" border="0" /></a>
+						<a href=""><img src="${img}/laptop.png" alt=""
+							border="0" /></a>
 					</div>
 					<div class="prod_price">
-						<span class="reduce">350$</span> <span class="price">270$</span>
+						<span class="reduce">350 €</span> <span class="price">270 €</span>
 					</div>
 				</div>
 				<div class="title_box">Newsletter</div>
 				<div class="border_box">
 					<input type="text" name="newsletter" class="newsletter_input"
-						value="your email" /> <a href="#" class="join">join</a>
+						value="your email" /> <a href="" class="join">join</a>
 				</div>
+
 				<div class="banner_adds">
-					<a href="#"><img src="${img}/bann2.jpg" alt="" border="0" /></a>
+					<a href=""><img src="${img}/bann2.jpg" alt="" border="0" /></a>
 				</div>
 			</div>
 			<!-- end of left content -->
@@ -180,60 +179,68 @@
 		</div>
 		<!-- end of center content -->
 		<div class="right_content">
-			<div class="shopping_cart">
-				<div class="cart_title">Panier</div>
-				<div class="cart_details">
-					3 items <br /> <span class="border_cart"></span> Total: <span
-						class="price">350$</span>
+				<c:if test="${!empty client_S }">
+					<div class="shopping_cart">
+						<div class="cart_title">Panier</div>
+						<c:set var="total2" value="<%=Integer.valueOf(0)%>" />
+						<c:set var="nbr" value="<%=Integer.valueOf(0)%>" />
+							<c:forEach items="${client_S.lignePanier}" var="lignePanier2">
+								<c:set var="total2" value="${total2 + lignePanier2.produit.prix*lignePanier2.quantite }" />
+								<c:set var="nbr" value="${nbr + 1 }" />
+							</c:forEach>		
+								<div class="cart_details">
+									<c:out value="${nbr }"></c:out> items <br /> <span class="border_cart"></span> Total: <span
+										class="price"> <c:out value="${total2 }"></c:out></span>
+								</div>
+								
+								<div class="cart_icon">
+									<a  title="header=[Checkout] body=[&nbsp;] fade=[on]"><img
+										src="${img}/shoppingcart.png" alt="" width="48" height="48"
+										border="0" /></a>
+								</div>	
+						</div>
+					</c:if>	
+				<div class="title_box">Nouveauté</div>
+				<div class="border_box">
+					<div class="product_title">
+						<a href="">Motorola 156 MX-VL</a>
+					</div>
+					<div class="product_img">
+						<a href=""><img src="${img}/p2.gif" alt=""
+							border="0" /></a>
+					</div>
+					<div class="prod_price">
+						<span class="reduce">350 €</span> <span class="price">270 €</span>
+					</div>
 				</div>
-				<div class="cart_icon">
-					<a href="#" title="header=[Checkout] body=[&nbsp;] fade=[on]"><img
-						src="${img}/shoppingcart.png" alt="" width="48" height="48"
-						border="0" /></a>
+				<div class="title_box">Manufacturers</div>
+				<ul class="left_menu">
+					<c:forEach items="${listConstructeurs}" var="constructeur">
+						<li class="odd"><a href="">${constructeur}</a></li>
+					</c:forEach>
+				</ul>
+				<div class="banner_adds">
+					<a href=""><img src="${img}/bann1.jpg" alt="" border="0" /></a>
 				</div>
 			</div>
-			<div class="title_box">Nouveauté</div>
-			<div class="border_box">
-				<div class="product_title">Motorola 156 MX-VL</div>
-				<div class="product_img">
-					<a href="#"><img src="${img}/p2.gif" alt="" border="0" /></a>
-				</div>
-				<div class="prod_price">
-					<span class="reduce">350$</span> <span class="price">270$</span>
-				</div>
-			</div>
-			<div class="title_box">Manufacturers</div>
-			<ul class="left_menu">
-				<li class="odd"><a href="#">Sony</a></li>
-				<li class="even"><a href="#">Samsung</a></li>
-				<li class="odd"><a href="#">Daewoo</a></li>
-				<li class="even"><a href="#">LG</a></li>
-				<li class="odd"><a href="#">Fujitsu Siemens</a></li>
-				<li class="even"><a href="#">Motorola</a></li>
-				<li class="odd"><a href="#">Phillips</a></li>
-				<li class="even"><a href="#">Beko</a></li>
-			</ul>
-			<div class="banner_adds">
-				<a href="#"><img src="${img}/bann1.jpg" alt="" border="0" /></a>
-			</div>
-		</div>
 		<!-- end of right content -->
 	</div>
 	<!-- end of main content -->
 	<div class="footer">
-		<div class="left_footer">
-			<img src="${img}/footer_logo.png" alt="" width="170" height="49" />
+			<div class="left_footer">
+				<img src="${img}/footer_logo.png" alt="" width="172" height="49" />
+			</div>
+			<div class="center_footer">
+				Electronix. All Rights Reserved 2015<br /> <a
+					href="http://csscreme.com"><img src="${img}/csscreme.jpg"
+					alt="csscreme" border="0" /></a><br /> <img src="${img}/payment.gif"
+					alt="" />
+			</div>
+			<div class="right_footer">
+				<a href="">home</a> <a href="">about</a> <a href="">sitemap</a> <a
+					href="">rss</a> <a href="">contact us</a>
+			</div>
 		</div>
-		<div class="center_footer">
-			Electronix. tout droit reservé 2015<br /> <br /> <img
-				src="${img}/payment.gif" alt="" />
-		</div>
-		<div class="right_footer">
-			<a href="#">home</a> <a href="#">about</a> <a href="#">sitemap</a> <a
-				href="#">rss</a> <a href="contact.html">contact us</a>
-		</div>
-	</div>
-	</div>
 	<!-- end of main_container -->
 </body>
 </html>
