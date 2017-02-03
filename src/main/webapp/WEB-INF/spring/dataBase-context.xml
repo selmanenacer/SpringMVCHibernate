@@ -33,7 +33,6 @@
 		
 		<beans:property name="annotatedClasses">
 			<beans:list>
-				<beans:value>fr.uvsq.spring.model.Person</beans:value>
 				<beans:value>fr.uvsq.spring.model.Adresse</beans:value>
 				<beans:value>fr.uvsq.spring.model.Categorie</beans:value>
 				<beans:value>fr.uvsq.spring.model.Client</beans:value>
@@ -42,7 +41,6 @@
 				<beans:value>fr.uvsq.spring.model.LigneCommande</beans:value>
 				<beans:value>fr.uvsq.spring.model.LignePanier</beans:value>
 				<beans:value>fr.uvsq.spring.model.Produit</beans:value>
-				<beans:value>fr.uvsq.spring.model.ImageBlob</beans:value>
 			</beans:list>
 		</beans:property>
 		

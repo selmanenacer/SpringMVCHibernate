@@ -84,6 +84,16 @@ public class HomePageController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/clients", method = RequestMethod.GET )
+	public String clients(Model model , HttpServletRequest request) {
+		//model.addAttribute("listProduit", this.produitService.findAll());
+		//model.addAttribute("listCategorie", this.categorieService.findAll());
+		//model.addAttribute("listConstructeurs", this.produitService.getListConstructeurs());
+		return "clients";
+	}
+	
+	
+	
 	
 	@RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
 	public String panierAdd(Model model ,@PathVariable("id") int id ,HttpServletRequest request ) {
@@ -119,19 +129,6 @@ public class HomePageController {
 		this.lignePanierService.delete(id_lignePanier);
 		request.getSession().setAttribute("client_S", clientService.findById(c.getId()));
 		return "redirect:/";
-	}
-
-	
-	
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model) {
-		return "list";
-	}
-	
-	@RequestMapping(value = "/product", method = RequestMethod.GET)
-	public String addProduct(Model model) {
-		model.addAttribute("login", new Client());
-		return "product";
 	}
 
 }

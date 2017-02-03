@@ -40,11 +40,7 @@
 	
 	<!-- ************************************************************ -->
 	<!-- ********************* Les Beans DAO************************* -->
-	<!-- ************************************************************ -->
-	<beans:bean id="personDAO" class="fr.uvsq.spring.dao.PersonDAOImpl">
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</beans:bean>
-	
+	<!-- ************************************************************ -->	
 	<beans:bean id="adresseDAO" class="fr.uvsq.spring.dao.AdresseDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
@@ -68,11 +64,6 @@
 	<!-- ************************************************************ -->
 	<!-- ********************* Les Beans Services******************** -->
 	<!-- ************************************************************ -->
-	
-	<beans:bean id="personService" class="fr.uvsq.spring.service.PersonServiceImpl">
-		<beans:property name="personDAO" ref="personDAO"></beans:property>
-	</beans:bean>
-	
 	<beans:bean id="adresseService" class="fr.uvsq.spring.service.AdresseServiceImpl">
 		<beans:property name="adresseDAO" ref="adresseDAO"></beans:property>
 	</beans:bean>
