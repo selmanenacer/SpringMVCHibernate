@@ -149,7 +149,12 @@
 								<div class="form_row">
 									<form:label path="libelle" class="contact"> <spring:message text="libelle" /> </form:label>
 									<form:input path="libelle" class="contact_input"/>
-								</div>
+								</div>   
+								
+								<div class="form_row">
+									<form:label path="constructeur" class="contact"> <spring:message text="constructeur" /> </form:label>
+									<form:input path="constructeur" class="contact_input"/>
+								</div> 
 								
 								<div class="form_row">
 									<form:label path="stock" class="contact"> <spring:message text="stock" /> </form:label>
@@ -208,6 +213,7 @@
 											<td>${produit.id}</td>
 											<td> <img src="${img}/${produit.urlImg}" alt="" border="0" width="120" height="140" /></td>
 											<td>${produit.libelle}</td>
+											<td>${produit.constructeur}</td>
 											<td>${produit.stock}</td>
 											<td>${produit.categorie.nom}</td>
 											<td>${produit.categorie.description}</td>

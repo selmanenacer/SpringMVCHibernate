@@ -12,12 +12,13 @@ public class Produit {
 	private int id;
 	
 	private String libelle;
-	
+
 	@ManyToOne 
 	private Categorie categorie;
 	
 	private int stock;
 	private String urlImg ;
+	private String constructeur ;
 	private int prix ;
 	public Produit(){
 		super();
@@ -60,6 +61,14 @@ public class Produit {
 
 	public void setUrlImg(String urlImg) {
 		this.urlImg = urlImg;
+	}
+	
+	public String getConstructeur() {
+		return constructeur;
+	}
+
+	public void setConstructeur(String constructeur) {
+		this.constructeur = constructeur;
 	}
 
 	public int getPrix() {
