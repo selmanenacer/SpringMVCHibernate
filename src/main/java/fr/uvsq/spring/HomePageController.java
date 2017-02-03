@@ -57,7 +57,7 @@ public class HomePageController {
 	public String home(Model model , HttpServletRequest request) {
 		model.addAttribute("listProduit", this.produitService.findAll());
 		model.addAttribute("listCategorie", this.categorieService.findAll());
-		
+		model.addAttribute("listConstructeurs", this.produitService.getListConstructeurs());
 		return "index";
 	}
 	

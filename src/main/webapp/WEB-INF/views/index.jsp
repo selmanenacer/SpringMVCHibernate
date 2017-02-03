@@ -95,18 +95,9 @@
 			<div class="left_content">
 				<div class="title_box">Categories</div>
 				<ul class="left_menu">
-					<li class="odd"><a href="processeur.jsp">Processeurs</a></li>
-					<li class="even"><a href="cartem.jsp">Carte Mére</a></li>
-					<li class="odd"><a href="ordi.jsp">Ordinateurs</a></li>
-					<li class="even"><a href="laptop.jsp">Laptops &amp;
-							Notebooks</a></li>
-					<li class="odd"><a href="carteg.jsp">Carte Graphique</a></li>
-					<li class="even"><a href="disc.jsp">Disque dur</a></li>
-					<li class="odd"><a href="alim.jsp">Alimentation</a></li>
-					<li class="even"><a href="carter.jsp">Carte Reseaux</a></li>
-					<li class="odd"><a href="ecran.jsp">Ecran PC</a></li>
-
-
+					<c:forEach items="${listCategorie}" var="categorie">
+						<li class="odd"><a href="#">${categorie.nom}</a></li>
+					</c:forEach>
 				</ul>
 				<div class="title_box">- 30 %</div>
 				<div class="border_box">
@@ -224,14 +215,9 @@
 				</div>
 				<div class="title_box">Manufacturers</div>
 				<ul class="left_menu">
-					<li class="odd"><a href="#">Sony</a></li>
-					<li class="even"><a href="#">Samsung</a></li>
-					<li class="odd"><a href="#">Daewoo</a></li>
-					<li class="even"><a href="#">LG</a></li>
-					<li class="odd"><a href="#">Fujitsu Siemens</a></li>
-					<li class="even"><a href="#">Motorola</a></li>
-					<li class="odd"><a href="#">Phillips</a></li>
-					<li class="even"><a href="#">Beko</a></li>
+					<c:forEach items="${listConstructeurs}" var="constructeur">
+						<li class="odd"><a href="#">${constructeur}</a></li>
+					</c:forEach>
 				</ul>
 				<div class="banner_adds">
 					<a href="#"><img src="${img}/bann1.jpg" alt="" border="0" /></a>

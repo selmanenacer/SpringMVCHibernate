@@ -49,4 +49,10 @@ public class ProduitServiceImpl implements ProduitService{
 
 	}
 
+	@Override
+	@Transactional
+	public List<String> getListConstructeurs() {
+		return produitDAO.getListConstructeurs();
+	}
+
 }
