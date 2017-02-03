@@ -10,6 +10,7 @@
 <title>Electronix Store</title>
 <meta http-equiv="Content-Type"
 	content="text/html; charset=windows-1252" />
+
 <spring:url value="/resources" var="css" />
 <spring:url value="/resources/js" var="js" />
 <spring:url value="/resources/images" var="img" />
@@ -19,7 +20,6 @@
 <link rel="stylesheet" type="text/css" href="${css}/style1.css" />
 
 <script type="text/javascript" src="${js }/boxOver.js"></script>
-<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
 
 <script src="${js}/modernizr.js"></script> <!-- Modernizr -->
 
@@ -157,8 +157,18 @@
 							<a href="<c:url value="/add/${produit.id }" />"
 								title="header=[Ajouter au panier] body=[&nbsp;] fade=[on]"><img
 								src="${img}/cart.gif" alt="" border="0" class="left_bt" /></a> 
-							</c:if>	
-								<a href="details.jsp" class="prod_details">details</a>
+							</c:if>
+							<p>
+								<a id="popupId" class="prod_details" >details 
+									<span>
+										Nom : ${produit.libelle } <br />
+										Prix : ${produit.prix } <br />
+										Quantité disponible : ${produit.stock } <br />
+										Catégorie : ${produit.categorie.nom } <br />
+										Déscription : ${produit.categorie.description }
+									</span>
+								</a>
+							</p>
 						</div>
 					</div>
 					

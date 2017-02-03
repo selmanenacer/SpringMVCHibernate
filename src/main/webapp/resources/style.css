@@ -1,3 +1,22 @@
+#popupId span {
+	position: absolute;
+	margin-top: -200px;
+	margin-left: -72px;
+	color: #09c;
+	background: rgba(0, 0, 0, .9);
+	padding: 15px;
+	border-radius: 3px;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .5);
+	transform: scale(0) rotate(-12deg);
+	transition: all .25s;
+	opacity: 0;
+}
+
+#popupId:hover span, #popupId:focus span {
+	transform: scale(1) rotate(0);
+	opacity: 1;
+}
+
 body {
 	background: url(images/bg.jpg) no-repeat #fff center top;
 	padding: 0;
@@ -594,8 +613,7 @@ a.prod_details {
 	float: left;
 	background: url(images/square-blue-add.gif) no-repeat left;
 	padding: 0 0 0 20px;
-	margin: 7px 0 0 38px;
-	_margin: 6px 0 0 35px;
+	margin: 0 0 0 38px;
 	text-decoration: none;
 	color: #0fa0dd;
 }
@@ -746,7 +764,7 @@ input.contact_input {
 	float: left;
 }
 
-.selectStyle{
+.selectStyle {
 	width: 253px;
 	height: 18px;
 	background-color: #fff;
@@ -814,5 +832,3 @@ a.contact {
 	color: #666666;
 	padding: 10px 0 0 60px;
 }
-
-

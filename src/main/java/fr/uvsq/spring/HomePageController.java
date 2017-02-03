@@ -61,6 +61,7 @@ public class HomePageController {
 		return "index";
 	}
 	
+	
 	@RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
 	public String panierAdd(Model model ,@PathVariable("id") int id ,HttpServletRequest request ) {
 		Produit p = produitService.findById(id) ;
