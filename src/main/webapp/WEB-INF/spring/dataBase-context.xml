@@ -10,11 +10,17 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
 	
+	<beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<beans:property name="location">
+			<beans:value>/WEB-INF/spring/properties/database.properties</beans:value>
+		</beans:property>
+	</beans:bean>
+	
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<beans:property name="url" value="jdbc:mysql://localhost:3306/electronix" />
-		<beans:property name="username" value="root" />
-		<beans:property name="password" value="" />
+		<beans:property name="driverClassName" value="${jdbc.driverClassName}" />
+		<beans:property name="url" value="${jdbc.url}" />
+		<beans:property name="username" value="${jdbc.username}" />
+		<beans:property name="password" value="${jdbc.password}" />
 	</beans:bean>
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->

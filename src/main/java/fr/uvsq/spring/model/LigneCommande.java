@@ -1,6 +1,5 @@
 package fr.uvsq.spring.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,7 +13,7 @@ public class LigneCommande {
 	private int id;
 	private int quantite;
 	private double montant;
-	@OneToOne (cascade = CascadeType.ALL)
+	@OneToOne
 	private Produit produit;
 	
 	@ManyToOne 
