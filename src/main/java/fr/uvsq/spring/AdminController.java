@@ -130,20 +130,5 @@ public class AdminController {
 		return "addAdmin";
 	}
 	
-	/*
-	@RequestMapping("/removeClient/{id}")
-	public String removeClient(@PathVariable("id") int id){
-
-		this.clientService.delete(id); 
-		return "redirect:/clients";
-	}
-
-	@RequestMapping("/editClient/{id}")
-	public String editClient(@PathVariable("id") int id, Model model){
-		model.addAttribute("client", this.clientService.findById(id));
-		model.addAttribute("listClients", this.clientService.findAll());
-		return "client";
-	}
-
-*/
+	
 }
