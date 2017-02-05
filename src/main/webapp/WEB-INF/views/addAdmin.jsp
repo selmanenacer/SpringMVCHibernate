@@ -23,15 +23,17 @@
 		<div class="top_bar">
 			<div class="top_search">
 				<div class="search_text">
-					<p >Search</p>
+					<p>Search</p>
 				</div>
 				<input type="text" class="search_input" name="search" /> <input
 					type="image" src="${img }/search.gif" class="search_bt" />
 			</div>
 			<div class="languages">
 				<div class="lang_text">Languages:</div>
-				<p class="lang"><img src="${img }/en.gif" alt="" border="0" /></p> 
-				
+				<p class="lang">
+					<img src="${img }/en.gif" alt="" border="0" />
+				</p>
+
 			</div>
 		</div>
 		<div id="header">
@@ -81,9 +83,7 @@
 				<div class="right_menu_corner"></div>
 			</div>
 			<!-- end of menu tab -->
-			<div class="crumb_navigation">
-				
-			</div>
+			<div class="crumb_navigation"></div>
 			<div class="left_content">
 				<div class="title_box">Fonction</div>
 				<ul class="left_menu">
@@ -102,73 +102,88 @@
 			</div>
 			<!-- end of left content -->
 			<div class="center_content">
-				<div class="center_title_bar">Liste des Categorie</div>
+				<div class="center_title_bar">Liste des Admins</div>
 				<div class="prod_box_big">
 					<div class="top_prod_box_big"></div>
 					<div class="center_prod_box_big">
-
-						<div class="contact_form">
+					
+					<div class="contact_form">
 							<div class="login">
-							<c:url var="addAction" value="/categorie/add"></c:url>
+							<c:url var="addAction" value="/admin/add"></c:url>
 
-							<form:form action="${addAction}" commandName="categorie">
+							<form:form action="${addAction}" commandName="client">
 							
 								<div class="form_row">			
-									<c:if test="${!empty categorie.nom}">						
+									<c:if test="${!empty client.nom}">						
 										<form:label path="id" class="contact"> <spring:message text="ID" /> </form:label>
 										<form:input path="id" readonly="true" size="8" disabled="true" class="contact_input"/> 
 										<form:hidden path="id" />
 									</c:if>
 								</div>
+								
+								<form:input placeholder="Nom" class="contact_input" path="nom"/>
+									<div class="form_row"></div>
+									<form:input placeholder="Prenom" class="contact_input" path="prenom" />
+									<div class="form_row"></div>
+									<form:input placeholder="Email" class="contact_input" path="email" />
+									<div class="form_row"></div>
+									<form:input type="password" placeholder="Mot de passe" class="contact_input" path="psw" />
+									<div class="form_row"></div>
+									<form:input placeholder="Rue" class="contact_input" path="adresse.rue"/>
+									<div class="form_row"></div>
+									<form:input placeholder="Ville" class="contact_input" path="adresse.ville"/>
+									<div class="form_row"></div>
+									<form:input placeholder="Code postal" class="contact_input" path="adresse.codePostal"/>
+									<div class="form_row"></div>
+								
+								
 								<div class="form_row">
-									
-									<form:input placeholder="nom" path="nom" class="contact_input"/>
-								</div>
-								<div class="form_row">
-									
-									<form:input placeholder="Description" path="description" class="contact_input"/>
-								</div>
-								<div class="form_row">
-									<c:if test="${!empty categorie.nom}">
-										<input type="submit" value="<spring:message text="Edit Categorie"/>" />
+									<c:if test="${!empty client.nom}">
+										<input type="submit" value="<spring:message text="Edit Admin"/>" />
 									</c:if>
 								</div>
 								
 								<div class="form_row">
-									<c:if test="${empty categorie.nom}">
-										<input type="submit" value="<spring:message text="Add Categorie"/>" />
+									<c:if test="${empty client.nom}">
+										<input type="submit" value="<spring:message text="Add Admins"/>" />
 									</c:if>
 								</div>
 							
 							</form:form>
 								</div>
 						</div>
-						
-						<div class="contact_form">
-							<h3>Liste des catégories de produits</h3>
-							<c:if test="${!empty listCategorie}">
-								<table class="tg">
+
+						<c:if test="${!empty listClients}">
+							<table class="tg">
+								<tr>
+									<th width="80">ID</th>
+									<th width="120">nom</th>
+									<th width="120">prenom</th>
+									<th width="120">email</th>
+									<th width="120">Rue</th>
+									<th width="120">Ville</th>
+									<th width="120">code postal</th>
+									<th width="60">Delete</th>
+									<th width="60">Edit</th>
+								</tr>
+								<c:forEach items="${listClients}" var="client">
 									<tr>
-										<th width="80">ID</th>
-										<th width="120">Name</th>
-										<th width="120">description</th>
-										<th width="60">Edit</th>
-										<th width="60">Delete</th>
-									</tr>
-									<c:forEach items="${listCategorie}" var="categorie">
-										<tr>
-											<td>${categorie.id}</td>
-											<td>${categorie.nom}</td>
-											<td>${categorie.description}</td>
-											<td><a href="<c:url value='/editCategorie/${categorie.id}' />"><img src="${img }/edit.png"/></a></td>
+										<td>${client.id}</td>
+										<td>${client.nom}</td>
+										<td>${client.prenom}</td>
+										<td>${client.email}</td>
+										<td>${client.adresse.rue}</td>
+										<td>${client.adresse.ville}</td>
+										<td>${client.adresse.codePostal}</td>
+										<td><a
+											href="<c:url value='/removeAdmin/${client.id}' />"><img src="${img }/delet.png"/></a></td>
 											<td><a
-												href="<c:url value='/removeCategorie/${categorie.id}' />"><img src="${img }/delet.png"/></a></td>
-										</tr>
-									</c:forEach>
-								</table>
-							</c:if>
-						</div>					
-						
+											href="<c:url value='/editAdmin/${client.id}' />"><img src="${img }/edit.png"/></a></td>
+									</tr>
+								</c:forEach>
+							</table>
+						</c:if>
+
 
 					</div>
 					<div class="bottom_prod_box_big"></div>

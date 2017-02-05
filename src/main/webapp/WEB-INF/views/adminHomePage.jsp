@@ -14,9 +14,13 @@
 <meta http-equiv="Content-Type"
 	content="text/html; charset=windows-1252" />
 
-<spring:url value="/resources/style.css" var="css" />
-<spring:url value="/resources/js/boxOver.js" var="boxOver" />
+<spring:url value="/resources" var="css" />
+<spring:url value="/resources/js" var="js" />
 <spring:url value="/resources/images" var="img" />
+
+
+<link rel="stylesheet" type="text/css" href="${css}/style.css" />
+<link rel="stylesheet" type="text/css" href="${css}/style1.css" />
 
 <link href="${css }" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${boxOver }"></script>
@@ -26,15 +30,15 @@
 		<div class="top_bar">
 			<div class="top_search">
 				<div class="search_text">
-					<a href="#">Advanced Search</a>
+					<p >Search</p>
 				</div>
-				<input type="text" class="search_input" name="search" /> 
+				<input type="text" class="search_input" name="search" /> <input
+					type="image" src="${img }/search.gif" class="search_bt" />
 			</div>
 			<div class="languages">
 				<div class="lang_text">Languages:</div>
-				<a href="#" class="lang"><img src="${img }/en.gif" alt=""
-					border="0" /></a> <a href="#" class="lang"><img
-					src="${img }/de.gif" alt="" border="0" /></a>
+				<p class="lang"><img src="${img }/en.gif" alt="" border="0" /></p> 
+				
 			</div>
 		</div>
 		<div id="header">
@@ -66,23 +70,31 @@
 			<div id="menu_tab">
 				<div class="left_menu_corner"></div>
 				<ul class="menu">
-					<li><a href="#" class="nav1"> Home</a></li>
-					<li class="divider"></li>
-					<li><a href="#" class="nav2">Products</a></li>
-					<li class="divider"></li>
-					<li><a href="#" class="nav3">Specials</a></li>
+					<li><a href="<c:url value='adminHomePage' />" class="nav1"> Accueil</a></li>
 					<li class="divider"></li>
 
-					<li><a href="enregistrer.jsp" class="nav4">Sign Up</a></li>
-					<li class="divider"></li>
+					<c:choose>
+						<c:when test="${!empty admin_S}">
+							<li><a href="" class="nav6">${admin_S.nom}
+									${admin_S.prenom}</a></li>
+							<li class="divider"></li>
+							<li><a href="<c:url value='/logout' />" class="nav6">Deconnexion</a></li>
+						</c:when>
+						<c:otherwise>
+							<li> <a href="<c:url value='/login' />" class="nav6" >Connexion</a></li>
+						</c:otherwise>
 
+					</c:choose>
+					
+					
+					
 				</ul>
-				<div class="right_menu_corner"></div>
+			  
+			<div class="right_menu_corner"></div>
 			</div>
 			<!-- end of menu tab -->
 			<div class="crumb_navigation">
-				Navigation: <a href="#">Home</a> &lt; <span class="current">Category
-					name</span>
+				
 			</div>
 			<div class="left_content">
 				<div class="title_box">Fonctions</div>
@@ -91,8 +103,8 @@
 					<li class="even"><a href="produits">Produits</a></li>
 					<li class="odd"><a href="categories">Categories</a></li>
 					<li class="even"><a href="clients">Commandes</a></li>
-					<li class="odd"><a href="clients">Clients</a></li>
-					<li class="even"><a href="#">Compte Administrateur</a></li>
+					<li class="odd"><a href="clientAdmin">Clients</a></li>
+					<li class="even"><a href="admin">Comptes Admin</a></li>
 				</ul>
 				<div class="title_box"></div>
 				<div class="border_box">

@@ -20,6 +20,7 @@
 
 <link href="${css }/style.css" rel="stylesheet" type="text/css" />
 <link href="${css }/style1.css" rel="stylesheet" type="text/css" />
+<link href="${css }/style_form.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${boxOver }"></script>
 </head>
 <body>
@@ -27,15 +28,17 @@
 		<div class="top_bar">
 			<div class="top_search">
 				<div class="search_text">
-					<p >Search</p>
+					<p>Search</p>
 				</div>
 				<input type="text" class="search_input" name="search" /> <input
 					type="image" src="${img }/search.gif" class="search_bt" />
 			</div>
 			<div class="languages">
 				<div class="lang_text">Languages:</div>
-				<p class="lang"><img src="${img }/en.gif" alt="" border="0" /></p> 
-				
+				<p class="lang">
+					<img src="${img }/en.gif" alt="" border="0" />
+				</p>
+
 			</div>
 		</div>
 		<div id="header">
@@ -52,13 +55,13 @@
 						<img src="${img }/laptop.png" width="94" height="92" alt=""
 							border="0" class="oferta_img" />
 						<div class="oferta_content">
-						<div class="oferta_details">
-							<div class="oferta_title">Bienvenue sur eloctronix site de
-								vente de produits informatique</div>
-							<div class="oferta_text">Divers produits informatique de
-								grande marque et &agrave; bas prix</div>
+							<div class="oferta_details">
+								<div class="oferta_title">Bienvenue sur eloctronix site de
+									vente de produits informatique</div>
+								<div class="oferta_text">Divers produits informatique de
+									grande marque et &agrave; bas prix</div>
+							</div>
 						</div>
-					</div>
 					</div>
 				</div>
 				<div class="top_divider">
@@ -71,20 +74,34 @@
 			<div id="menu_tab">
 				<div class="left_menu_corner"></div>
 				<ul class="menu">
-					<li><a href="<c:url value='/' />" class="nav1"> Home</a></li>
+					<li><a href="<c:url value='adminHomePage' />" class="nav1"> Accueil</a></li>
+					<li class="divider"></li>
+					<c:choose>
+						<c:when test="${!empty admin_S}">
+							<li><a href="" class="nav6">${admin_S.nom}
+									${admin_S.prenom}</a></li>
+							<li class="divider"></li>
+							<li><a href="<c:url value='/logout' />" class="nav6">Deconnexion</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="<c:url value='/login' />" class="nav6">Connexion</a></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 				<div class="right_menu_corner"></div>
 			</div>
 			<!-- end of menu tab -->
 			<div class="left_content">
-				<div class="title_box">Categories</div>
+				<div class="title_box">Fonctions</div>
 				<ul class="left_menu">
-					<c:forEach items="${listCategorie}" var="categorie">
-						<li class="odd"><a href="">${categorie.nom}</a></li>
-					</c:forEach>
+					<li class="even"><a href="produits">Produits</a></li>
+					<li class="odd"><a href="categories">Categories</a></li>
+					<li class="even"><a href="clients">Commandes</a></li>
+					<li class="odd"><a href="clientAdmin">Clients</a></li>
+					<li class="even"><a href="admin">Comptes Admin</a></li>
 				</ul>
-				
-				
+
+
 			</div>
 			<!-- end of left content -->
 			<div class="center_content">
@@ -94,127 +111,132 @@
 					<div class="center_prod_box_big">
 
 						<div class="contact_form">
+							<div class="login">
 							<c:url var="addAction" value="/produit/add"></c:url>
-							
-							<form:form action="${addAction}" commandName="produit" enctype="multipart/form-data">
-								<div class="form_row">			
+
+							<form:form action="${addAction}" commandName="produit"
+								enctype="multipart/form-data">
+								<div class="form_row">
 									<c:if test="${!empty produit.libelle}">
-										<form:label path="id" class="contact"> <spring:message text="ID" /> </form:label>
-										<form:input path="id" readonly="true" size="8" disabled="true" class="contact_input"/> <form:hidden path="id" />
-									</c:if>				
+									
+										<form:input path="id" readonly="true" size="8" disabled="true"
+											class="contact_input" />
+										<form:hidden path="id" />
+									</c:if>
 								</div>
-								
+
 								<div class="form_row">
-									<form:label path="libelle" class="contact"> <spring:message text="libelle" /> </form:label>
-									<form:input path="libelle" class="contact_input"/>
-								</div>   
-								
-								<div class="form_row">
-									<form:label path="constructeur" class="contact"> <spring:message text="constructeur" /> </form:label>
-									<form:input path="constructeur" class="contact_input"/>
-								</div> 
-								
-								<div class="form_row">
-									<form:label path="stock" class="contact"> <spring:message text="stock" /> </form:label>
-									<form:input path="stock" class="contact_input"/>
+									<form:input placeholder="Libelle" path="libelle" class="contact_input" />
 								</div>
-									<div class="form_row">
-									<form:label path="stock" class="contact"> <spring:message text="prix" /> </form:label>
-									<form:input path="prix" class="contact_input"/>
+
+								<div class="form_row">
+									
+									<form:input placeholder="Constructeur" path="constructeur" class="contact_input" />
+								</div>
+
+								<div class="form_row">
+									<form:input placeholder="Stock" path="stock" class="contact_input" />
 								</div>
 								<div class="form_row">
-									<form:label path="categorie.id" class="contact"> <spring:message text="categorie" /> </form:label>
-									<form:select path="categorie.id" >
+									<form:input placeholder="Prix" path="prix" class="contact_input" />
+								</div>
+								<div class="form_row">
+									Categorie
+									<form:select path="categorie.id">
 										<c:forEach items="${listCategorie}" var="categorie">
-											<form:option value="${categorie.id}" label="${categorie.nom}"/>
+											<form:option value="${categorie.id}" label="${categorie.nom}" />
 										</c:forEach>
 									</form:select>
 								</div>
-								
+
 								<div class="form_row">
-									<form:label path="" class="contact"> <spring:message text="image " /> </form:label>
-									<input type="file" name="file" />
+									Image
+									<input  type="file" name="file" />
 								</div>
-								
+
 								<div class="form_row">
 									<c:if test="${!empty produit.libelle}">
-										<input type="submit"  value="<spring:message text="Edit produit"/>" />
+										<input type="submit"
+											value="<spring:message text="Edit produit"/>" />
 									</c:if>
 								</div>
-								
+
 								<div class="form_row">
 									<c:if test="${empty produit.libelle}">
-										<input type="submit" value="<spring:message text="Add produit"/>" />
+										<input type="submit"
+											value="<spring:message text="Add produit"/>" />
 									</c:if>
 								</div>
 
 							</form:form>
-		
 						</div>
-						
-						<div class="contact_form">
-							<h3>List des produits</h3>
-							<c:if test="${!empty listProduit}">
-								<table class="tg">
-									<tr>
-										<th width="80">ID</th>
-										<th width="120">photo </th>
-										<th width="120">libelle</th>
-										<th width="120">stock</th>
-										<th width="120">Categorie</th>
-										<th width="120">Description</th>
-										<th width="60">Edit</th>
-										<th width="60">Delete</th>
-									</tr>
-									<c:forEach items="${listProduit}" var="produit">
-										<tr>
-											<td>${produit.id}</td>
-											<td> <img src="${img}/${produit.urlImg}" alt="" border="0" width="120" height="140" /></td>
-											<td>${produit.libelle}</td>
-											<td>${produit.constructeur}</td>
-											<td>${produit.stock}</td>
-											<td>${produit.categorie.nom}</td>
-											<td>${produit.categorie.description}</td>
-											<td><a href="<c:url value='/editProduit/${produit.id}' />">Edit</a></td>
-											<td><a href="<c:url value='/removeProduit/${produit.id}' />">Delete</a></td>
-										</tr>
-									</c:forEach>
-								</table>
-							</c:if>
-						</div>
-
+						<h3>List des produits</h3>
 					</div>
-					<div class="bottom_prod_box_big"></div>
-				</div>
 
+					
+						
+						<c:if test="${!empty listProduit}">
+							<table class="tg">
+								<tr>
+									<th width="80">ID</th>
+									<th width="120">libelle</th>
+									<th width="120">constructeur</th>
+									<th width="120">stock</th>
+									<th width="120">Cat</th>
+									<th width="120">Desc</th>
+									<th width="60">Edit</th>
+									<th width="60">Delete</th>
+								</tr>
+								<c:forEach items="${listProduit}" var="produit">
+									<tr>
+										<td  border: 1px solid black>${produit.id}</td>
+										<td>${produit.libelle}</td>
+										<td>${produit.constructeur}</td>
+										<td>${produit.stock}</td>
+										<td>${produit.categorie.nom}</td>
+										<td>${produit.categorie.description}</td>
+										<td><a
+											href="<c:url value='/editProduit/${produit.id}' />"><img src="${img }/edit.png"/></a></td>
+										<td><a
+											href="<c:url value='/removeProduit/${produit.id}' />"><img src="${img }/delet.png"/></a></td>
+									</tr>
+								</c:forEach>
+							</table>
+						</c:if>
+					
+
+				</div>
+				<div class="bottom_prod_box_big"></div>
 			</div>
-			<!-- end of center content -->
-			<div class="right_content">
-				<div class="title_box">Manufacturers</div>
-				<ul class="left_menu">
-					<c:forEach items="${listConstructeurs}" var="constructeur">
-						<li class="odd"><a href="">${constructeur}</a></li>
-					</c:forEach>
-				</ul>
-			</div>
-			<!-- end of right content -->
+
 		</div>
-		<!-- end of main content -->
-		<div class="footer">
-			<div class="left_footer">
-				<img src="${img }/footer_logo.png" alt="" width="170" height="49" />
-			</div>
-			<div class="center_footer">
-				Template name. All Rights Reserved 2008<br /> <a
-					href="http://csscreme.com"><img src="${img }/csscreme.jpg"
-					alt="csscreme" border="0" /></a><br /> <img src="${img }/payment.gif"
-					alt="" />
-			</div>
-			<div class="right_footer">
-				<a href="">home</a> <a href="">about</a> <a href="">sitemap</a> <a
-					href="">rss</a> <a href="">contact us</a>
-			</div>
+		<!-- end of center content -->
+		<div class="right_content">
+			
+			<ul class="left_menu">
+				<c:forEach items="${listConstructeurs}" var="constructeur">
+					<li class="odd"><a href="">${constructeur}</a></li>
+				</c:forEach>
+			</ul>
 		</div>
+		<!-- end of right content -->
+	</div>
+	<!-- end of main content -->
+	<div class="footer">
+		<div class="left_footer">
+			<img src="${img }/footer_logo.png" alt="" width="170" height="49" />
+		</div>
+		<div class="center_footer">
+			Template name. All Rights Reserved 2008<br /> <a
+				href="http://csscreme.com"><img src="${img }/csscreme.jpg"
+				alt="csscreme" border="0" /></a><br /> <img src="${img }/payment.gif"
+				alt="" />
+		</div>
+		<div class="right_footer">
+			<a href="">home</a> <a href="">about</a> <a href="">sitemap</a> <a
+				href="">rss</a> <a href="">contact us</a>
+		</div>
+	</div>
 	</div>
 	<!-- end of main_container -->
 </body>

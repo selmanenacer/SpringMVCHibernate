@@ -103,7 +103,7 @@ public class ProduitController {
 	@RequestMapping("/editProduit/{id}")
 	public String editClient(@PathVariable("id") int id, Model model){
 		model.addAttribute("produit", this.produitService.findById(id));
-		model.addAttribute("listProduits", this.produitService.findAll());
+		model.addAttribute("listProduit", this.produitService.findAll());
 		model.addAttribute("listCategorie", this.categorieService.findAll());
 		return "produit";
 	}

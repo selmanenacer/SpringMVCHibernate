@@ -57,7 +57,7 @@ public class CategorieController {
 		@RequestMapping("/editCategorie/{id}")
 	    public String editClient(@PathVariable("id") int id, Model model){
 	        model.addAttribute("categorie", this.categorieService.findById(id));
-	        model.addAttribute("listClients", this.categorieService.findAll());
+	        model.addAttribute("listCategorie", this.categorieService.findAll());
 	        return "categories";
 	    }
 }

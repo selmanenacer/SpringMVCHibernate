@@ -154,6 +154,7 @@
 									<div class="form_row"></div>
 									<form:input placeholder="Code postal" class="contact_input" path="adresse.codePostal" value="${user.adresse.codePostal }" />
 									<div class="form_row"></div>
+									
 									<c:if test="${!empty client.nom && empty user.nom  }">
 										<input type="submit" value="<spring:message text="Edit client"/>" />
 									</c:if>
