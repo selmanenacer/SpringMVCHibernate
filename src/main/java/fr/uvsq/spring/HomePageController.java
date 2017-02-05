@@ -78,10 +78,7 @@ public class HomePageController {
 	
 	@RequestMapping(value = "/commander", method = RequestMethod.GET )
 	public String commander(Model model , HttpServletRequest request) {
-		//model.addAttribute("listProduit", this.produitService.findAll());
-		//model.addAttribute("listCategorie", this.categorieService.findAll());
-		//model.addAttribute("listConstructeurs", this.produitService.getListConstructeurs());
-		return "index";
+		return "commande";
 	}
 	
 	@RequestMapping(value = "/clients", method = RequestMethod.GET )
@@ -108,7 +105,6 @@ public class HomePageController {
 			lignePanierService.update(lp);
 			
 		}else{
-			System.out.println(" je ss ici ") ;
 			LignePanier lp = new LignePanier();
 			lp.setProduit(p);
 			lp.setQuantite(1);

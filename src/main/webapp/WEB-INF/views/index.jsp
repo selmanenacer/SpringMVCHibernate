@@ -160,7 +160,7 @@
 								<a id="popupId" class="prod_details" >details 
 									<span>
 										Nom : ${produit.libelle } <br />
-										Prix : ${produit.prix } <br />
+										Prix : ${produit.prix } €<br />
 										Quantité disponible : ${produit.stock } <br />
 										Catégorie : ${produit.categorie.nom } <br />
 										Déscription : ${produit.categorie.description }
@@ -256,11 +256,11 @@
 		<h2>Cart</h2>
 		<ul class="cd-cart-items">
 			<c:if test="${!empty client_S }">
-			<c:set var="total" value="<%=Integer.valueOf(0)%>" />
+				<c:set var="total" value="<%=Integer.valueOf(0)%>" />
 				<c:forEach items="${client_S.lignePanier}" var="lignePanier">
 					<li>
 						<span class="cd-qty"> ${lignePanier.quantite } x</span> ${lignePanier.produit.libelle }
-						<div class="cd-price"> ${lignePanier.produit.prix }</div>
+						<div class="cd-price"> ${lignePanier.produit.prix } €</div>
 						<!-- nacer changements -->
 							<a href="<c:url value="/remove/${lignePanier.produit.id }" />" class="cd-item-remove cd-img-replace">Remove</a>
 						<!-- fin nacer changements -->	
@@ -275,9 +275,11 @@
 		<div class="cd-cart-total">
 			<p>Total <span><c:out value="${total }"></c:out></span></p>
 		</div> <!-- cd-cart-total -->
-
-		<a href="<c:url value='/commander' />" class="checkout-btn">Passer la commande</a>
-		
+		<c:if test="${!empty client_S }">
+			<c:if test="${!empty client_S.lignePanier }">
+				<a href="<c:url value='/commander' />" class="checkout-btn">Passer la commande</a>
+			</c:if>
+		</c:if>
 		<p class="cd-go-to-cart"><a href="<c:url value='/' />">Retour</a></p>
 	</div> <!-- cd-cart -->
 	

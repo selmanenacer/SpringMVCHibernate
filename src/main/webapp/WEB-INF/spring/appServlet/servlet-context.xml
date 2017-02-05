@@ -61,6 +61,14 @@
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 	
+	<beans:bean id="ligneCommandeDAO" class="fr.uvsq.spring.dao.LigneCommandeDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	
+	<beans:bean id="commandeDAO" class="fr.uvsq.spring.dao.CommandeDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	
 	<!-- ************************************************************ -->
 	<!-- ********************* Les Beans Services******************** -->
 	<!-- ************************************************************ -->
@@ -82,6 +90,14 @@
 	
 	<beans:bean id="lignePanierService" class="fr.uvsq.spring.service.LignePanierServiceImpl">
 		<beans:property name="lignePanierDAO" ref="lignePanierDAO"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="ligneCommandeService" class="fr.uvsq.spring.service.LigneCommandeServiceImpl">
+		<beans:property name="ligneCommandeDAO" ref="ligneCommandeDAO"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="commandeService" class="fr.uvsq.spring.service.CommandeServiceImpl">
+		<beans:property name="commandeDAO" ref="commandeDAO"></beans:property>
 	</beans:bean>
 	
 	

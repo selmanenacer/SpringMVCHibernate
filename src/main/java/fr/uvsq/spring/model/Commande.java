@@ -1,7 +1,8 @@
 package fr.uvsq.spring.model;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ public class Commande {
 	private double montant;
 	
 	@OneToMany(mappedBy="commande")
-	private Set<LigneCommande> ligneCommandes = new HashSet<LigneCommande>();
+	private List<LigneCommande> ligneCommandes = new ArrayList<LigneCommande>();
 	
 	@ManyToOne 
 	private Client client;
@@ -29,7 +30,7 @@ public class Commande {
 		super();
 	}
 	
-	public Commande(Date dateCommande, double montant, Set<LigneCommande> ligneCommandes,
+	public Commande(Date dateCommande, double montant, List<LigneCommande> ligneCommandes,
 			Client client) {
 		super();
 		this.dateCommande = dateCommande;
@@ -55,10 +56,10 @@ public class Commande {
 	public void setMontant(double montant) {
 		this.montant = montant;
 	}
-	public Set<LigneCommande> getLigneCommandes() {
+	public List<LigneCommande> getLigneCommandes() {
 		return ligneCommandes;
 	}
-	public void setLigneCommandes(Set<LigneCommande> ligneCommandes) {
+	public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
 		this.ligneCommandes = ligneCommandes;
 	}
 	public Client getClient() {
