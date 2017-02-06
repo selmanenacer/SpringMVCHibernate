@@ -148,6 +148,8 @@
 									<div class="form_row"></div>
 									<form:input type="password" placeholder="Mot de passe" class="contact_input" path="psw" />
 									<div class="form_row"></div>
+									<form:input placeholder="Téléphone" class="contact_input" path="tel" value="${user.tel }"/>
+									<div class="form_row"></div>
 									<form:input placeholder="Rue" class="contact_input" path="adresse.rue" value="${user.adresse.rue }"/>
 									<div class="form_row"></div>
 									<form:input placeholder="Ville" class="contact_input" path="adresse.ville" value="${user.adresse.ville }"/>

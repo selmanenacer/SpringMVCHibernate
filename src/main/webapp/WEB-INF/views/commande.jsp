@@ -10,6 +10,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
+<SCRIPT LANGUAGE="JavaScript">
+function afficher()
+{
+	alert("Votre commandé a été prise en compte !")
+}
+
+</SCRIPT>
 <title>Electronix Store - Contact</title>
 <meta http-equiv="Content-Type"
 	content="text/html; charset=windows-1252" />
@@ -217,7 +225,7 @@
 												<br /><br />
 												<p align="center">
 													<input name="Submit" value="Continuer >>"
-														type="submit">
+														type="submit" onclick="afficher()">
 												</p>
 												<hr>
 													<div align="center">
