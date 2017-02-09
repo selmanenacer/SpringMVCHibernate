@@ -78,9 +78,9 @@ public class CommandeController {
 		commande.setLigneCommandes(listLignesCommandes);
 		commande.setMontant(montantTotal);
 		commandeService.insert(commande);
-		for (LigneCommande ligneCommande : listLignesCommandes) {
+		/*for (LigneCommande ligneCommande : listLignesCommandes) {
 			ligneCommandeService.insert(ligneCommande);
-		}
+		}*/
 		//raffrichir la variable de session
 		request.getSession().setAttribute("client_S", clientService.findById(c.getId()));
 		return "redirect:/";

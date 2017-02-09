@@ -5,11 +5,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Entity
@@ -20,7 +25,10 @@ public class Commande {
 	private Date dateCommande;
 	private double montant;
 	
-	@OneToMany(mappedBy="commande")
+	
+	
+	
+	@OneToMany(mappedBy="commande",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	private List<LigneCommande> ligneCommandes = new ArrayList<LigneCommande>();
 	
 	@ManyToOne 

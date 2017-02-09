@@ -1,8 +1,3 @@
-<%-- 
-    Document   : connexion
-    Created on : 1 févr. 2015, 17:14:31
-    Author     : yacine
---%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,14 +10,12 @@
 	content="text/html; charset=windows-1252" />
 
 <spring:url value="/resources" var="css" />
-<spring:url value="/resources/js" var="js" />
+<spring:url value="/resources/js/boxOver.js" var="boxOver" />
 <spring:url value="/resources/images" var="img" />
 
-
-<link rel="stylesheet" type="text/css" href="${css}/style.css" />
-<link rel="stylesheet" type="text/css" href="${css}/style1.css" />
-
-<link href="${css }" rel="stylesheet" type="text/css" />
+<link href="${css }/style.css" rel="stylesheet" type="text/css" />
+<link href="${css }/style1.css" rel="stylesheet" type="text/css" />
+<link href="${css }/style_form.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${boxOver }"></script>
 </head>
 <body>
@@ -30,15 +23,17 @@
 		<div class="top_bar">
 			<div class="top_search">
 				<div class="search_text">
-					<p >Search</p>
+					<p>Search</p>
 				</div>
 				<input type="text" class="search_input" name="search" /> <input
 					type="image" src="${img }/search.gif" class="search_bt" />
 			</div>
 			<div class="languages">
 				<div class="lang_text">Languages:</div>
-				<p class="lang"><img src="${img }/en.gif" alt="" border="0" /></p> 
-				
+				<p class="lang">
+					<img src="${img }/en.gif" alt="" border="0" />
+				</p>
+
 			</div>
 		</div>
 		<div id="header">
@@ -72,7 +67,6 @@
 				<ul class="menu">
 					<li><a href="<c:url value='adminHomePage' />" class="nav1"> Accueil</a></li>
 					<li class="divider"></li>
-
 					<c:choose>
 						<c:when test="${!empty admin_S}">
 							<li><a href="" class="nav6">${admin_S.nom}
@@ -81,25 +75,18 @@
 							<li><a href="<c:url value='/logout' />" class="nav6">Deconnexion</a></li>
 						</c:when>
 						<c:otherwise>
-							<li> <a href="<c:url value='/login' />" class="nav6" >Connexion</a></li>
+							<li><a href="<c:url value='/login' />" class="nav6">Connexion</a></li>
 						</c:otherwise>
-
 					</c:choose>
-					
-					
-					
+
 				</ul>
-			  
-			<div class="right_menu_corner"></div>
+				<div class="right_menu_corner"></div>
 			</div>
 			<!-- end of menu tab -->
-			<div class="crumb_navigation">
-				
-			</div>
+			<div class="crumb_navigation"></div>
 			<div class="left_content">
-				<div class="title_box">Fonctions</div>
+				<div class="title_box">Fonction</div>
 				<ul class="left_menu">
-					
 					<li class="even"><a href="produits">Produits</a></li>
 					<li class="odd"><a href="categories">Categories</a></li>
 					<li class="even"><a href="listCommande">Commandes</a></li>
@@ -107,17 +94,44 @@
 					<li class="even"><a href="admin">Comptes Admin</a></li>
 				</ul>
 				
-				
-				
+					<div class="product_title"></div>
+					<div class="product_img"></div>
+
+				</div>
+
 			</div>
 			<!-- end of left content -->
 			<div class="center_content">
-				<div class="center_title_bar">Page Administrateur</div>
+				<div class="center_title_bar">Liste des Clients</div>
 				<div class="prod_box_big">
 					<div class="top_prod_box_big"></div>
 					<div class="center_prod_box_big">
 
-						
+						<c:if test="${!empty listCommande}">
+							<table class="tg">
+								<tr>
+									<th width="80">ID</th>
+									<th width="120">Date</th>
+									<th width="120">montant</th>
+									<th width="120">ID client</th>
+									<th width="60">Voir</th>
+									<th width="60">Delete</th>
+								</tr>
+								<c:forEach items="${listCommande}" var="commande">
+									<tr>
+										<td>${commande.id}</td>
+										<td>${commande.dateCommande}</td>
+										<td>${commande.montant}</td>
+										<td>${commande.client.id}</td>
+										<td><a
+											href="<c:url value='/voirCommande/${commande.id}' />"><img src="${img }/edit.png"/></a></td>
+										<td><a
+											href="<c:url value='/removeCommande/${commande.id}' />"><img src="${img }/delet.png"/></a></td>
+									</tr>
+								</c:forEach>
+							</table>
+						</c:if>
+
 
 					</div>
 					<div class="bottom_prod_box_big"></div>
@@ -127,9 +141,9 @@
 			<!-- end of center content -->
 			<div class="right_content">
 				
-				
-				
-				
+
+
+
 			</div>
 			<!-- end of right content -->
 		</div>
@@ -141,7 +155,7 @@
 			<div class="center_footer">
 				Template name. All Rights Reserved 2008<br /> <a
 					href="http://csscreme.com"><img src="${img }/csscreme.jpg"
-					alt="csscreme" border="0" /></a><br /> 
+					alt="csscreme" border="0" /></a><br />
 			</div>
 			<div class="right_footer">
 				<a href="#">home</a> <a href="#">about</a> <a href="#">sitemap</a> <a

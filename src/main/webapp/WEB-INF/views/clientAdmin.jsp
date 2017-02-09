@@ -89,7 +89,7 @@
 				<ul class="left_menu">
 					<li class="even"><a href="produits">Produits</a></li>
 					<li class="odd"><a href="categories">Categories</a></li>
-					<li class="even"><a href="clients">Commandes</a></li>
+					<li class="even"><a href="listCommande">Commandes</a></li>
 					<li class="odd"><a href="clientAdmin">Clients</a></li>
 					<li class="even"><a href="admin">Comptes Admin</a></li>
 				</ul>
@@ -117,7 +117,7 @@
 									<th width="120">Rue</th>
 									<th width="120">Ville</th>
 									<th width="120">code postal</th>
-									<th width="60">Delete</th>
+									
 								</tr>
 								<c:forEach items="${listClients}" var="client">
 									<tr>
@@ -128,8 +128,7 @@
 										<td>${client.adresse.rue}</td>
 										<td>${client.adresse.ville}</td>
 										<td>${client.adresse.codePostal}</td>
-										<td><a
-											href="<c:url value='/removeClientAdmin/${client.id}' />"><img src="${img }/delet.png"/></a></td>
+										
 									</tr>
 								</c:forEach>
 							</table>

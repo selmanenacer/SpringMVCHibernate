@@ -96,7 +96,7 @@
 				<ul class="left_menu">
 					<li class="even"><a href="produits">Produits</a></li>
 					<li class="odd"><a href="categories">Categories</a></li>
-					<li class="even"><a href="clients">Commandes</a></li>
+					<li class="even"><a href="listCommande">Commandes</a></li>
 					<li class="odd"><a href="clientAdmin">Clients</a></li>
 					<li class="even"><a href="admin">Comptes Admin</a></li>
 				</ul>
@@ -211,14 +211,7 @@
 
 		</div>
 		<!-- end of center content -->
-		<div class="right_content">
-			
-			<ul class="left_menu">
-				<c:forEach items="${listConstructeurs}" var="constructeur">
-					<li class="odd"><a href="">${constructeur}</a></li>
-				</c:forEach>
-			</ul>
-		</div>
+		
 		<!-- end of right content -->
 	</div>
 	<!-- end of main content -->

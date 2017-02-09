@@ -89,7 +89,7 @@
 				<ul class="left_menu">
 					<li class="even"><a href="produits">Produits</a></li>
 					<li class="odd"><a href="categories">Categories</a></li>
-					<li class="even"><a href="clients">Commandes</a></li>
+					<li class="even"><a href="listCommande">Commandes</a></li>
 					<li class="odd"><a href="clientAdmin">Clients</a></li>
 					<li class="even"><a href="admin">Comptes Admin</a></li>
 				</ul>

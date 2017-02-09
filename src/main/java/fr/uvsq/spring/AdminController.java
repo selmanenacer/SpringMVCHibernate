@@ -16,17 +16,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 import fr.uvsq.spring.model.Client;
+import fr.uvsq.spring.model.Commande;
+import fr.uvsq.spring.model.LigneCommande;
 import fr.uvsq.spring.service.ClientService;
+import fr.uvsq.spring.service.CommandeService;
 
 @Controller
 public class AdminController {
 
 	private ClientService clientService ;
+	private CommandeService commandeService;
 
 	@Autowired(required=true)
 	@Qualifier(value="clientService")
 	public void setClientService(ClientService clientService) {
 		this.clientService = clientService;
+	}
+	
+	@Autowired(required=true)
+	@Qualifier(value="commandeService")
+	public void setCommandeService(CommandeService commandeService) {
+		this.commandeService = commandeService;
 	}
 
 	@RequestMapping(value = "/adminHomePage", method = RequestMethod.GET)
@@ -57,6 +67,44 @@ public class AdminController {
 			return "clientAdmin"; 
 		}
 	}
+	
+	@RequestMapping(value = "/voirCommande/{id}", method = RequestMethod.GET)
+	public String voirCommande(Model model,@PathVariable("id") int id, HttpServletRequest request) {
+		if(request.getSession().getAttribute("admin_S")==null){
+			return "redirect:/login";
+		}else{
+			
+			model.addAttribute("commande", commandeService.findById(id));
+			Commande c = commandeService.findById(id);
+			
+			System.out.println("je suis laaaaaaaaaaaaaaaaaa : " + c.getLigneCommandes().size());
+			for(int i=0 ; i<c.getLigneCommandes().size();i++){
+				LigneCommande lc = c.getLigneCommandes().get(i);
+				System.out.println("je suis laaaaaaaaaaaaaaaaaa");
+				System.out.println(lc.getId() +" " + lc.getQuantite()+" "+ lc.getMontant());
+			}
+			
+			return "voirCommande"; 
+		}
+	}
+	
+	@RequestMapping(value = "/listCommande", method = RequestMethod.GET)
+	public String listCommande(Model model, HttpServletRequest request) {
+		if(request.getSession().getAttribute("admin_S")==null){
+			return "redirect:/login";
+		}else{
+
+			model.addAttribute("listCommande", commandeService.findAll());
+			return "listCommande"; 
+		}
+	}
+	
+	@RequestMapping("/removeCommande/{id}")
+    public String removeCommande(@PathVariable("id") int id){
+		
+        this.commandeService.delete(id);
+        return "redirect:/listCommande";
+    }
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String listadmin(Model model, HttpServletRequest request) {

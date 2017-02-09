@@ -1,10 +1,13 @@
 package fr.uvsq.spring.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 public class LigneCommande {
@@ -16,7 +19,7 @@ public class LigneCommande {
 	@OneToOne
 	private Produit produit;
 	
-	@ManyToOne 
+	@ManyToOne
 	private Commande commande;
 	
 	public LigneCommande(){
