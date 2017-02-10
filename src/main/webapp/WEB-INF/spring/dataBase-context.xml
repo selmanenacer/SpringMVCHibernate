@@ -43,7 +43,6 @@
 				<beans:value>fr.uvsq.spring.model.Categorie</beans:value>
 				<beans:value>fr.uvsq.spring.model.Client</beans:value>
 				<beans:value>fr.uvsq.spring.model.Commande</beans:value>
-				<beans:value>fr.uvsq.spring.model.Facture</beans:value>
 				<beans:value>fr.uvsq.spring.model.LigneCommande</beans:value>
 				<beans:value>fr.uvsq.spring.model.LignePanier</beans:value>
 				<beans:value>fr.uvsq.spring.model.Produit</beans:value>

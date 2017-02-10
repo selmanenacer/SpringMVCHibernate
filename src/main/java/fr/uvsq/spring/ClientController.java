@@ -43,7 +43,7 @@ public class ClientController {
 		}else{
 			//existing person, change email
 			model.addAttribute("user", p );
-			return "client" ;
+			return "enregistrer" ;
 		}
 		
 		return "redirect:/login";

@@ -1,8 +1,3 @@
-<%-- 
-    Document   : enregistrer
-    Created on : 30 janv. 2015, 19:35:03
-    Author     : yacine
---%>
 
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
