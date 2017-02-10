@@ -81,7 +81,11 @@
 							<li><a href="" class="nav6">${client_S.nom}
 									${client_S.prenom}</a></li>
 							<li class="divider"></li>
+							<li><a href="<c:url value='/editClient' />" class="nav6">Profile</a></li>
+							
+							
 							<li><a href="<c:url value='/logout' />" class="nav6">Deconnexion</a></li>
+							
 						</c:when>
 						<c:otherwise>
 							<li> <a href="<c:url value='/login' />" class="nav6" >Connexion</a></li>
@@ -282,6 +286,8 @@
 		</c:if>
 		<p class="cd-go-to-cart"><a href="<c:url value='/' />">Retour</a></p>
 	</div> <!-- cd-cart -->
+	
+	
 	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="${js}/main.js"></script> <!-- Gem jQuery -->
